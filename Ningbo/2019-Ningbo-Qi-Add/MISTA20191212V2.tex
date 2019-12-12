@@ -6,10 +6,10 @@
 
 %\usepackage{ctex}
 
-%\setbeamertemplate{theorems}[numbered] 
+%\setbeamertemplate{theorems}[numbered]
 
 \usepackage{textcomp}
-\usepackage{float} 
+\usepackage{float}
 \usepackage{multirow}
 \usepackage{comment}
 \usepackage{enumitem}
@@ -31,7 +31,7 @@
 \usepackage{graphicx,mathrsfs}
 \usepackage{adjustbox}
 \usepackage{multirow}
-\usepackage{float} 
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{backgrounds}
@@ -67,7 +67,7 @@ Stabilizing Grand Cooperation in Unbalanced Cooperative Games%
 }
 }
 
-\author[{\bf Xiangtong Qi}] % (optional, use only with lots of authors)
+\author[{\color{olive}{\bf Xiangtong Qi}}] % (optional, use only with lots of authors)
 %{F.~Author\inst{1} \and S.~Another\inst{2}}
 {   %  \textit{Supervisor:}
   Xiangtong Qi
@@ -78,9 +78,9 @@ Stabilizing Grand Cooperation in Unbalanced Cooperative Games%
 \institute[] % (optional, but mostly needed)
 {\footnotesize
 	Department of Industrial Engineering and Decision Analytics,\\
-\vspace{2mm}	
+\vspace{2mm}
 	The Hong Kong University of Science and Technology\\
-    \vspace{5mm}	
+    \vspace{5mm}
 	Joint works with {\color{olive}{\bf Lindong Liu}} (USTC), {\color{olive}{\bf Zhou Xu}} (HKPU)
 	\vspace{3mm}
 }
@@ -118,7 +118,7 @@ Stabilizing Grand Cooperation in Unbalanced Cooperative Games%
 \justifying
 	\color{blue}
 	\item centralized decision making, to minimize the total cost (for social optimum);\\
-	\item enforced by an external party, to minimize negative externalities (e.g. the number of machines used, etc). 
+	\item enforced by an external party, to minimize negative externalities (e.g. the number of machines used, etc).
 \end{itemize}
 \end{frame}
 
@@ -131,7 +131,7 @@ Is every player beneficial from the grand cooperation?\\
 Is the grand cooperation stable? \\
 ~\\
 	\pause
-	\centering 
+	\centering
 \textcolor{red}{Not Always.}\\
 \vspace{3mm}
 \textcolor{red}{If the grand cooperation is not stable, how to stabilize it?}
@@ -222,7 +222,7 @@ A cost allocation $\alpha \in \R^n$ is in the \textcolor{red}{\bf core} if it sa
 \centering
 \scalebox{0.8}{
 \begin{tikzpicture}[x=1cm,y=1.5cm,scale=0.8]
-% draw horizontal line   
+% draw horizontal line
 \draw (0,0) -- (6,0);
 
 \draw (8,0) -- (16,0);
@@ -233,18 +233,18 @@ A cost allocation $\alpha \in \R^n$ is in the \textcolor{red}{\bf core} if it sa
 \foreach[count=\i] \x in {0,2,6}
 {
 	\draw (\x,3pt) -- (\x,-3pt);
-	\draw (\x,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};		
+	\draw (\x,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
 %	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
 %	\x = \vectime[\i];
-%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};	
+%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
 }
 \foreach[count=\i] \x in {0,3,8}
 {
 	\draw (\x+8,3pt) -- (\x+8,-3pt);
-	\draw (\x+8,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};		
+	\draw (\x+8,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
 %	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
 %	\x = \vectime[\i];
-%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};	
+%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
 }
 
 \draw (1,0) node[above=3pt] {job 1};
@@ -443,7 +443,7 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 {\footnotesize $\mathrm{Core}(N,\pi) = \bigg\{ \alpha:~ \alpha(N)=\pi(N), ~\alpha(S) \leq \pi(S), ~\forall S \in \mathbb{S} \setminus \{N\},~\alpha \in \R^n   \bigg\}$.}
 
 \begin{shaded}
-\centering Relax Budget Balanced constraint: $\alpha(N) = \pi(N)$
+\centering \textcolor{red}{\bf Relax Budget Balanced constraint}: $\alpha(N) = \pi(N)$
 \end{shaded}
 \begin{itemize}
 \item \textcolor{blue}{Minimum Subsidy} to stabilize the grand coalition:
@@ -456,14 +456,14 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \begin{shaded}
 \centering
 \small
-Minimum Subsidy needed for MSG Example:\\ 
+Minimum Subsidy needed for MSG Example:\\
 \vspace{2mm}
-\textcolor{red}{$38-37.25 = 0.75$}
+\textcolor{red}{$\omega^*=38-37.25 = 0.75$}
 \end{shaded}
 \end{frame}
 
 
-\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Motivation: Advantages of Lagrangian Relaxation over Linear Relaxation}
+\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Linear Programming Relaxation Based (LPB) Cost Allocation Method}
 \vspace{-5mm}
 \small
 \begin{shaded}
@@ -476,29 +476,28 @@ Minimum Subsidy needed for MSG Example:\\
 \end{shaded}
 
 \textcolor{red}{\bf \centerline{All existing methods are based on Linear Relaxation}}\\
-\vspace{-2mm}
-\begin{shaded} 
-\centering
-Lagrangian Relaxation v.s. Linear Relaxation
+\vspace{-3mm}
+\begin{shaded}
+\vspace{-6mm}
+\footnotesize
+\begin{eqnarray*}
+f(x) = cx ~\Longrightarrow~ \pi(S) = \min_{x} \big\{ cx:~Ax \geq B\gamma^s + E, ~A'x \geq B'\gamma^s + E', ~x \in \{0,1\}^{q} \big\}
+\end{eqnarray*}
+\vspace{-8mm}
 \end{shaded}
 \vspace{-5mm}
-\begin{columns}
-\begin{column}{5.5cm}
-\begin{itemize}
+\setbeamersize{description width=1cm}
+\begin{description}
+\justifying
 \footnotesize
-\item Applicable in non-linear case;
-\item Generally more effective;
-\end{itemize}
-\end{column}
-\begin{column}{8cm}
-\begin{itemize}
-\footnotesize
-\item New insights via decomposition;
-\item Adequate studies on LR for ILP.
-\end{itemize}
-\end{column}
-\end{columns}
-%\begin{shaded} 
+	\item[Step 1.] \textcolor{red}{Find an LP $\min_x \big\{cx:Gx \geq F\gamma^s\big\}$} giving a \textcolor{red}{lower bound $\pi_{\mathrm{LP}}(S)$ to $\pi(S)$};
+	\item[Step 2.] \textcolor{red}{Compute $\big(\alpha^{GF}_{LP}\big)_j = \big(\mu^*\big)^T F_{\cdot j}$}, where $\mu^*$: dual solution; $F_{\cdot j}$: $j$-th column.
+	\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+\end{description}
+
+
+
+%\begin{shaded}
 %\centering
 %LPB v.s. LRB Cost Allocation Methods\\
 %(Caprara and Letchford, 2010, Mathematical Programming)
@@ -526,7 +525,29 @@ Lagrangian Relaxation v.s. Linear Relaxation
 
 
 
-\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Research Question}
+\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Research Questions}
+\vspace{-5mm}
+\begin{shaded}
+\centering
+Lagrangian Relaxation v.s. Linear Relaxation
+\end{shaded}
+\vspace{-5mm}
+\begin{columns}
+\begin{column}{5.5cm}
+\begin{itemize}
+\footnotesize
+\item Applicable in non-linear case;
+\item Generally more effective;
+\end{itemize}
+\end{column}
+\begin{column}{8cm}
+\begin{itemize}
+\footnotesize
+\item New insights via decomposition;
+\item Adequate studies on LR for ILP.
+\end{itemize}
+\end{column}
+\end{columns}
 \begin{shaded}
 \small
 \textcolor{red}{\bf Compute a cost allocation} based on \textcolor{red}{\bf Lagrangian Relaxation} technique such that
@@ -541,88 +562,60 @@ Lagrangian Relaxation v.s. Linear Relaxation
 
 
 
-\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Lagrangian Relaxation and Decomposition}
+\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Lagrangian Relaxation, Lagrangian Decomposition, Sub-games Analyses}
 \footnotesize
-\vspace{-4mm}
+\vspace{-7mm}
 \begin{shaded}
+\vspace{-1mm}
 \begin{equation*}\label{eqn:orgc}
-\pi(S) = \min_{x} \big\{ f(x):Ax \geq B\gamma^s + E, ~A'x \geq B'\gamma^s + E', ~x \in \{0,1\}^{q} \big\},
+\textcolor{blue}{\pi(S)} = \min_{x} \big\{ f(x):Ax \geq B\gamma^s + E, ~A'x \geq B'\gamma^s + E', ~x \in \{0,1\}^{q} \big\}
 \end{equation*}
 \vspace{-5mm}
-\textcolor{blue}{
-\begin{eqnarray*}
-\pi_{LR}^{\lambda}(S) = \min_{x}  \{f(x)-\lambda (A'x - B'\gamma^s - E'):
-       Ax \geq B\gamma^s + E, ~x \in \{0,1\}^{q}\}.
-\end{eqnarray*}
-}
-\vspace{-5mm}
 \end{shaded}
+\vspace{-5mm}
 \begin{itemize}
 \footnotesize
-%\item  Lagrangian characteristic function, $\forall S \in \mathbb{S}$:
-%\textcolor{blue}{
-%\begin{eqnarray*}
-%\pi_{LR}^{\lambda}(S) = \min_{x}  \{f(x)-\lambda (A'x - B'\gamma^s - E'):
-%       Ax \geq B\gamma^s + E, x \in \{0,1\}^{q \times 1}\}.
-%\end{eqnarray*}
-%}
-%\vspace{-4mm}
-\item Lagrangian sub-characteristic functions 1 and 2:
+\item  \textcolor{red}{\bf Lagrangian characteristic function}, $\forall S \in \mathbb{S}$:
+\begin{eqnarray*}
+\textcolor{blue}{\pi_{LR}^{\lambda}(S)} = \min_{x}  \{f(x)-\lambda (A'x - B'\gamma^s - E'):
+       Ax \geq B\gamma^s + E, x \in \{0,1\}^{q \times 1}\}.
+\end{eqnarray*}
+\vspace{-6mm}
+\item \textcolor{red}{\bf Lagrangian sub-characteristic functions 1 and 2}, $\forall S \in \mathbb{S}$:
 \begin{eqnarray*}\label{eqn:subcf1}
 \begin{aligned}
-\pi_{LR1}^{\lambda}(S) = \lambda  B'\gamma^s + \lambda E', ~\forall S \in \mathbb{S}.
+\textcolor{blue}{\pi_{LR1}^{\lambda}(S)} = \lambda  B'\gamma^s + \lambda E', ~\forall S \in \mathbb{S}.
 \end{aligned}
 \end{eqnarray*}
- \begin{eqnarray*}
-\pi_{LR2}^{\lambda}(S) = \min_x \{ f(x)-\lambda A'x: Ax \geq B\gamma^s + E, ~x \in \{0,1\}^{q} \}, ~\forall S \in \mathbb{S}.
+\vspace{-8mm}
+\begin{eqnarray*}
+\textcolor{blue}{\pi_{LR2}^{\lambda}(S)} = \min_x \{ f(x)-\lambda A'x: Ax \geq B\gamma^s + E, ~x \in \{0,1\}^{q} \}, ~\forall S \in \mathbb{S}.
 \end{eqnarray*}
-\vspace{-1em}
+\vspace{-1.8em}
+\item \textcolor{red}{\bf Sub-games 1 and 2}:
+\begin{itemize}
+\justifying
+\item[$-$] Sub-game 1, vector $\textcolor{blue}{(\alpha_{LR1}^{\lambda})_j} = (\lambda B')_j + \frac{1}{n}\lambda E',~\forall j \in N$, in the core;\\
+\vspace{2mm}
+\item[$-$] Sub-game 2, optimal cost allocation $\textcolor{blue}{\alpha_{LR2}^{\lambda}}$: Primal-Dual-Type alg. (sub-modular), Column Generation Based alg. (not sub-modular).
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{LRB Cost Allocation}
+\footnotesize
 \begin{theorem}\label{thm:lrcostallocationfeasible}
 \justifying
 \rm{
 Given any Lagrangian multiplier $\lambda$, \textcolor{red}{if $\alpha_{LR1}^{\lambda}$ and $\alpha_{LR2}^{\lambda}$ are feasible} cost allocations for sub-games $(N,\pi_{LR1}^{\lambda})$ and $(N,\pi_{LR2}^{\lambda})$, respectively,\\
-\vspace{3mm} 
+\vspace{3mm}
 ~~~~then \textcolor{red}{$\alpha_{LR}^{\lambda} = \alpha_{LR1}^{\lambda} + \alpha_{LR2}^{\lambda}$ is a feasible} cost allocation for game $(N,\pi)$.}
 \end{theorem}
-\end{itemize}
-\end{frame}
-
-
-
-\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Computing Optimal Cost Allocations for Sub-games}
-\footnotesize
-\vspace{-2mm}
-\begin{itemize}
-\item For \textcolor{red}{sub-game 1 $(N,\pi_{LR1}^{\lambda})$}, a vector $\alpha_{LR1}^{\lambda}$ with
-\begin{equation*}
-\{(\alpha_{LR1}^{\lambda})_j = (\lambda B')_j + \frac{1}{n}\lambda E':~\forall j \in N \}
-\end{equation*}
-is a feasible cost allocation and lies in the core.
-
-\vspace{3mm}
-\item For \textcolor{red}{sub-game 2 $(N,\pi_{LR2}^{\lambda})$}, its optimal cost allocation $\alpha_{LR2}^{\lambda}$ can be computed by
-\begin{itemize}
-\footnotesize
-\item[$-$] Primal-Dual-Type algorithm, if this game is sub-modular;\\
-\vspace{2mm}
-\item[$-$] Column Generation Based algorithm, if this game is not.
-\end{itemize}
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Instrument 1: LRB Cost Allocation, {\footnotesize 2016, IJOC}}{Properties of LRB Cost Allocation}
-\small
-\vspace{-0.5cm}
-\begin{shaded}
-\centering
-In general, the lower bound obtained by \textcolor{red}{Lagrangian relaxation} technique is \textcolor{blue}{\bf as sharp as} the lower bound obtained by \textcolor{red}{linear programming relaxation}.
-\end{shaded}
 \vspace{-0.1cm}
 \begin{theorem}\label{thm:lagcostallocation1}
 \rm
-For game $(N,\pi)$, under the same ILP formulation for $\pi(S)$, the LRB cost allocation value is no less than the LPB cost allocation value, i.e., $\alpha_{LR}^{\lambda}(N) \geq \alpha_{LP}(N)$, when 
+For game $(N,\pi)$, under the same ILP formulation for $\pi(S)$, the LRB cost allocation value is no less than the LPB cost allocation value, i.e., $\alpha_{LR}^{\lambda}(N) \geq \alpha_{LP}(N)$, when
 \begin{itemize}
 \item[(1)] \textcolor{red}{Given Lagrangian multiplier is optimal, i.e., $\lambda = \lambda^*$;}
 \item[(2)] \textcolor{red}{$Core(N,\pi_{LR2}^{\lambda})$ is non-empty.}
@@ -904,7 +897,7 @@ UFL  &&  &74.37	&78.27	&69.52	&&	&-	&-	&-\\
 \vspace{3mm}
 {\footnotesize $\mathrm{Core}(N,\pi) = \bigg\{ \alpha:~ \alpha(N)=\pi(N), ~\alpha(S) \leq \pi(S), ~\forall S \in \mathbb{S} \setminus \{N\},~\alpha \in \R^n   \bigg\}$.}
 \begin{shaded}
-\centering Relax Coalition Stability constraints: $\alpha(S) \leq \pi(S)$
+\centering \textcolor{red}{\bf Relax Coalition Stability constraints}: $\alpha(S) \leq \pi(S)$
 \end{shaded}
 \begin{itemize}
 \item \textcolor{blue}{Minimum Penalty} to stabilize the grand coalition:
@@ -918,7 +911,7 @@ z^* = \min \big\{ z:\alpha(N)= \pi(N),~\alpha(S) \leq \pi(S)+z, ~\forall S \in \
 \begin{shaded}
 \centering
 \small
-Minimum Penalty needed for MSG Example:\\ 
+Minimum Penalty needed for MSG Example:\\
 \vspace{2mm}
 \textcolor{red}{$z^* = 0.5$}
 \end{shaded}
@@ -930,7 +923,7 @@ Minimum Penalty needed for MSG Example:\\
 \vspace{3mm}
 {\footnotesize $\mathrm{Core}(N,\pi) = \bigg\{ \alpha:~ \alpha(N)=\pi(N), ~\alpha(S) \leq \pi(S), ~\forall S \in \mathbb{S} \setminus \{N\},~\alpha \in \R^n   \bigg\}$.}
 \begin{shaded}
-\centering Relax Coalition Stability and Budget Balance constraints
+\centering \textcolor{red}{\bf \small Relax Coalition Stability and Budget Balance constraints}
 \end{shaded}
 \begin{itemize}
 \item \textcolor{blue}{Penalty-Subsidy Pair} to stabilize the grand coalition:
@@ -985,7 +978,7 @@ Penalty-Subsidy Pair for MSG Example:\\
 \rm
 	\begin{itemize}
 	\justifying
-%		\item	$\omega(0) = \omega^*$, $\omega(z^*)=0$, and $0 < \omega(z) < \omega^*$ for any $z \in \big(0,z^*\big)$.		
+%		\item	$\omega(0) = \omega^*$, $\omega(z^*)=0$, and $0 < \omega(z) < \omega^*$ for any $z \in \big(0,z^*\big)$.
 		\item $\omega(z)$ is \textcolor{red}{decreasing}, \textcolor{red}{piecewise linear}, and \textcolor{red}{convex} in $z \in\big[ 0,z^* \big]$.
 \item For each segment of $\omega(z)$, the \textcolor{red}{slope $\omega'(z) \in \big[ -n, -\frac{n}{n-1}\big]$}.
 	\end{itemize}
@@ -1011,15 +1004,15 @@ Penalty-Subsidy Pair for MSG Example:\\
 %		\item[Step 1.] Set $P^* = \big\{0,z^*\big\}$ and $\mathbb{P} = \big\{ \big[0,z^*\big]\big\}$.
 %		\vspace{2mm}
 %		\item[Step 2.] Until $\mathbb{P}$ is empty, update $P^*$ and $\mathbb{P}$ as follows:
-%		\begin{itemize} 
+%		\begin{itemize}
 %		\justifying
 %		\small
 %			\item $P^*$: $0=z_0<\cdots<z_q=z^*$.
 %			\vspace{2mm}
-%			\item Remove any \textcolor{red}{interval $\big[z_{k-1},z_k\big]$} from $\mathbb{P}$. 
+%			\item Remove any \textcolor{red}{interval $\big[z_{k-1},z_k\big]$} from $\mathbb{P}$.
 %			\vspace{2mm}
 %			\item Construct \textcolor{red}{linear functions $R_{k-1}(z)$ and $L_{k}(z)$}.
-%			\vspace{2mm} 	
+%			\vspace{2mm}
 %%			\begin{itemize}
 %%				\item $R_{k-1}(z)$ passes $\big(z_{k-1},\omega(z_{k-1})\big)$ with a slope equal to a right weak derivative of $\omega(z)$ at $z_{k-1}$;
 %%				\item $L_{k}(z)$ passes $\big(z_{k},\omega(z_{k})\big)$ with a slope equal to a left weak derivative of $\omega(z)$ at $z_{k}$.
@@ -1143,7 +1136,7 @@ Define:
 \item[Step 2.] Find an optimal $\bar{\alpha}(\ \cdot \ ,z)$ to \textcolor{red}{a relaxed LP} of $\tau(z)$:
 \begin{equation*}
 \max_{\alpha\in \R^n} \big\{ \alpha(N,z): \alpha(S,z) \leq \pi(S)+z, \mbox{ for all } S \in \mathbb{S}'\big\}.
-\end{equation*} 
+\end{equation*}
 \vspace{-11pt}
 \item[Step 3.]
 Find an optimal $S^*$ to the \textcolor{red}{separation problem}:
@@ -1208,11 +1201,11 @@ Parallel Machine Scheduling Games:
 		\multicolumn{1}{c}{} &\multicolumn{1}{c}{Machines} &\multicolumn{1}{c}{Jobs}	&\multicolumn{1}{c}{CP Approach}	&\multicolumn{1}{c}{LP Approach}\\
 		\hline
 		IPU		&\textcolor{black}{Identical}		&\textcolor{black}{Unweighted} 	&\textcolor{red}{P-time}	&\textcolor{red}{P-time}\\
-		
+
 		UPU		&\textcolor{black}{Unrelated}	&\textcolor{black}{Unweighted}	&--	&\textcolor{red}{P-time}\\
-		
+
 		IPW		&\textcolor{black}{Identical}		&\textcolor{black}{Weighted}	&\textcolor{red}{Pseudo P-time} (fixed $m$)	&--		\\
-		
+
 		UPW		&\textcolor{black}{Unrelated}	&\textcolor{black}{Weighted}	&\textcolor{red}{Lower Bound}	&\textcolor{red}{Upper Bound}\\
 		\hline
 	\end{tabular}
@@ -1682,7 +1675,7 @@ Generate \textcolor{red}{an upper bound} when serving as a heuristic
 %\vspace{-2mm}
 %\begin{definition}\label{defi:tmp}
 %\justifying
-%A UFL game $\big(N,\pi_{\mathrm{UFL}}(\~\cdot\~;c)\big)$ is defined with the players being the customers in $N$ and the characteristic function  $\pi_{\mathrm{UFL}}(\~\cdot\~;c)$ determined by 
+%A UFL game $\big(N,\pi_{\mathrm{UFL}}(\~\cdot\~;c)\big)$ is defined with the players being the customers in $N$ and the characteristic function  $\pi_{\mathrm{UFL}}(\~\cdot\~;c)$ determined by
 %\begin{eqnarray*}\label{eqn:colp2}
 %\pi_{\mathrm{UFL}}(N;c) = \min_{v,u} \bigg\{\sum_{i \in M} f_iv_i + \sum_{i \in M} \sum_{j \in N} r_{ik}u_{ij}:~\sum_{i \in M} u_{ij} = y_j^S, \\
 %~0 \leq u_{ij} \leq v_i \leq 1, v_i, u_{ij} \in \{0,1\}, ~\forall i \in M, ~\forall j \in N.
@@ -1777,5 +1770,378 @@ $(80,80)$	&&100		&&0.129		&&\textcolor{red}{63.31}	&&\textcolor{red}{100} 	&&\te
 \end{center}
 \end{frame}
 
+
+\begin{frame}{Example of Cooperative Game}
+\begin{itemize}
+\justifying
+\small
+	\item There are 3 players, each having a job to do\\
+\footnotesize
+  - The cost of each working individually \\
+\qquad \qquad
+ $V(\{1\}) = V(\{2\}) = V(\{3\}) = 10$ \\
+  - The cost of any two working collaboratively \\
+\qquad  \qquad
+$V(\{1\}) = V(\{2\}) = V(\{3\}) = 14$ \\
+  - The cost of all three working collaboratively  \\
+\qquad  \qquad
+$V(\{1,2,3\}) = 18$
+\small
+  \item Question: are the three willing to work collaboratively? \\
+\footnotesize
+  - We need a way of sharing the cost $V(\{1,2,3\}) = 18$ among the players \\
+  - An easy solution $(6, 6, 6)$
+\small
+  \item How about the following ways of sharing cost? \\
+\footnotesize
+  $\{7,7,4\}, \{8,6,4\}, \{4,4,10\},\ldots$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{The Formulation}
+\begin{itemize}
+\justifying
+\small
+	\item We need a way of sharing the cost $V(\{1,2,3\}) = 18$ among the players,$\{x_1, x_2, x_3\}$, satisfying
+    \vspace{-0.5em}
+    \begin{eqnarray*}
+      \begin{aligned}
+    &x_1 \leq 10,  \\
+    &x_2 \leq 10,  \\
+    &x_3 \leq 10,  \\
+    &x_1 + x_2 \leq 14, \\
+    &x_1 + x_3 \leq 14, \\
+    &x_2 + x_3 \leq 14, \\
+    &x_1 + x_2 + x_3  = 18.
+      \end{aligned}
+    \end{eqnarray*}
+  \vspace{-1.5em}
+
+  \item All are feasible solutions \\
+  \vspace{0.25em}
+
+  - $\{6,6,6\},\{7,7,4\}, \{8,6,4\}, \{4,4,10\},\ldots$ \\
+  - They are said to be in the \textbf{core} of the game
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Core May Be Empty}
+\begin{itemize}
+\small
+\justifying
+
+	\item Suppose that
+
+\vspace{-1.5em}
+  \begin{eqnarray*}
+    \begin{aligned}
+  &V(\{1\}) = V(\{2\}) = V(\{3\}) = 10 \\
+  &V(\{1,2\}) = V(\{1,3\}) = V(\{2,3\}) = 14 \\
+  &\underline{V(\{1,2,3\}) = 22}
+    \end{aligned}
+  \end{eqnarray*}
+\vspace{-1.5em}
+
+  \item There is no feasible solution to the following constraints
+
+  \vspace{-1.5em}
+    \begin{eqnarray*}
+      \begin{aligned}
+    &x_1 \leq 10, x_2 \leq 10, x_3 \leq 10,   \\
+    &x_1 + x_2 \leq 14, x_1 + x_3 \leq 14, x_2 + x_3 \leq 14\\
+    &x_1 + x_2 + x_3  = 22
+      \end{aligned}
+    \end{eqnarray*}
+  \vspace{-1.5em}
+
+  \item  Core is empty
+  \item  Centralized optimal decision cannot be reached
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Scheduling with Machine Activation Cost}
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{Sche1.png}
+  \end{figure}
+  \centering
+
+  \begin{columns}
+  \begin{column}{4.5cm}
+  \vspace{-2cm}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1.1\textwidth]{Sche2.png}
+  \end{figure}
+  \end{column}
+
+  \begin{column}{6.5cm}
+  \vspace{-5mm}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{Sche3.png}
+  \end{figure}
+
+  \vspace{-8mm}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=6.2cm, height=3.1cm]{Sche4.png}
+  \end{figure}
+
+  \end{column}
+
+  \end{columns}
+
+\end{frame}
+
+
+\begin{frame}{The Grand Coalition}
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{Grand1.png}
+  \end{figure}
+  \centering
+
+  \begin{figure}[htb]
+  \includegraphics[width=1\textwidth]{Grand2.png}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Related Concepts}
+\begin{itemize}
+\normalsize
+\justifying
+	\item Approximate core \\
+  \vspace{0.25em}
+  - ???
+	\item Least core \\
+  \vspace{0.25em}
+  - ???
+  \item $\ldots$\\
+  \vspace{1em}
+  \item Focusing on bounds
+  \vspace{0.25em}
+  \item How to help making decisions?
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Subsidization}
+\small
+\vspace{-4mm}
+\begin{columns}
+
+\begin{column}{6.5cm}
+\footnotesize
+\vspace{-1em}
+\begin{shaded}
+\centering
+Optimal Cost Allocation Problem
+\begin{eqnarray*}
+\begin{aligned}
+\max ~\big(\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4\big) &= \textcolor{red}{37.25 < 38}\\
+s.t.~~ \alpha_1 \leq 11.5,~\cdots,&~\alpha_4 \leq 14.5,\\
+\alpha_1 + \alpha_2 \leq 16.5,~\cdots,~ &\alpha_3+\alpha_4 \leq 22.5,\\
+~~~~~~~~~~\cdots,~~&\\
+\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 &\leq 38.
+\end{aligned}
+\end{eqnarray*}
+\vspace{-0.5em}
+\end{shaded}
+\begin{shaded}
+\centering
+\textcolor{blue}{
+$\alpha^* = \big[6;8.75;10.75;11.75\big]$}
+\end{shaded}
+\end{column}
+
+\begin{column}{4.5cm}
+\small
+\centering
+
+\textcolor{red}{Subsidy}\\
+\vspace{2em}
+An outside party chips in $\omega=0.75$, making up the deficit.
+
+\end{column}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Penalization}
+\small
+\vspace{-4mm}
+\begin{columns}
+\begin{column}{4.5cm}
+\begin{table}[H]
+\centering
+\tabcolsep=8pt
+\footnotesize
+\renewcommand\arraystretch{1.1}
+%\caption{\label{table:examplecost} Coalitional cost}
+\vglue5pt
+\vspace{-3mm}
+\begin{tabular}[!h]{c c }
+\hline
+\multicolumn{1}{c}{Coalitions} &\multicolumn{1}{c}{Cost}\\
+\hline
+$\{1\}$		&11.5	\\
+
+$\{2\}$		&12.5	\\
+
+$\{3\}$		&13.5	\\
+
+$\{4\}$		&14.5  \\
+
+$\{1,2\}$		&16.5	\\
+
+$\{1,3\}$		&17.5	\\
+
+$\{1,4\}$		&18.5	\\
+
+$\{2,3\}$		&19.5	\\
+
+$\{2,4\}$		&20.5	\\
+
+$\{3,4\}$		&22.5	\\
+
+$\{1,2,3\}$		&25.5	\\
+
+$\{1,2,4\}$		&26.5	\\
+
+$\{1,3,4\}$		&28.5	\\
+
+$\{2,3,4\}$		&31.5	\\
+
+$\{1,2,3,4\}$	&38	\\
+\hline
+\end{tabular}
+\end{table}
+\end{column}
+% \pause
+
+\begin{column}{7cm}
+\small
+The outside party as the rule maker:\\
+\vspace{1em}
+\footnotesize
+For any coalition that does not join the grand coalition, please pay a penalty of $z$.
+
+\begin{shaded}
+\vspace{-1.5em}
+\begin{eqnarray*}
+\begin{aligned}
+\min z\\
+s.t.~~ \alpha_1 \leq 11.5+z,~\cdots,&~\alpha_4 \leq 14.5+z,\\
+\alpha_1 + \alpha_2 \leq 16.5+z,~\cdots,~ &\alpha_3+\alpha_4 \leq 22.5+z,\\
+~~~~~~~~~~\cdots,~~&\\
+\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 +\omega &\leq 38.
+\end{aligned}
+\end{eqnarray*}
+\vspace{-1.5em}
+\end{shaded}
+
+\centering
+$ Z_{\min}=0.5$ \\
+\vspace{1em}
+Result: No one pays the penalty
+
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Simultaneous Subsidization and Penalization }
+\small
+\vspace{-4mm}
+\begin{columns}
+\begin{column}{4.5cm}
+\begin{table}[H]
+\centering
+\tabcolsep=8pt
+\footnotesize
+\renewcommand\arraystretch{1.1}
+%\caption{\label{table:examplecost} Coalitional cost}
+\vglue5pt
+\vspace{-3mm}
+\begin{tabular}[!h]{c c }
+\hline
+\multicolumn{1}{c}{Coalitions} &\multicolumn{1}{c}{Cost}\\
+\hline
+$\{1\}$		&11.5	\\
+
+$\{2\}$		&12.5	\\
+
+$\{3\}$		&13.5	\\
+
+$\{4\}$		&14.5  \\
+
+$\{1,2\}$		&16.5	\\
+
+$\{1,3\}$		&17.5	\\
+
+$\{1,4\}$		&18.5	\\
+
+$\{2,3\}$		&19.5	\\
+
+$\{2,4\}$		&20.5	\\
+
+$\{3,4\}$		&22.5	\\
+
+$\{1,2,3\}$		&25.5	\\
+
+$\{1,2,4\}$		&26.5	\\
+
+$\{1,3,4\}$		&28.5	\\
+
+$\{2,3,4\}$		&31.5	\\
+
+$\{1,2,3,4\}$	&38	\\
+\hline
+\end{tabular}
+\end{table}
+\end{column}
+% \pause
+
+\begin{column}{7cm}
+\small
+\vspace{0.5em}
+Outside party as the rule maker:\\
+\vspace{1em}
+\footnotesize
+(1) For any coalition that does not join the grand coalition, please pay a penalty of $z$. \\
+\vspace{0.5em}
+(2) Outside party subsidizes grand coalition $\omega$.
+
+\begin{shaded}
+\vspace{-1.5em}
+\begin{eqnarray*}
+\begin{aligned}
+% \max ~\big(\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4\big) &= \textcolor{red}{37.25 < 38}\\
+s.t.~~ \alpha_1 \leq 11.5+z,~\cdots,&~\alpha_4 \leq 14.5+z,\\
+\alpha_1 + \alpha_2 \leq 16.5+z,~\cdots,~ &\alpha_3+\alpha_4 \leq 22.5+z,\\
+~~~~~~~~~~\cdots,~~&\\
+\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 +\omega &\leq 38.
+\end{aligned}
+\end{eqnarray*}
+\vspace{-1.5em}
+\end{shaded}
+
+\centering
+
+For example, $\omega= 1/2, z=1/6$
+
+\end{column}
+\end{columns}
+\end{frame}
 
 \end{document}

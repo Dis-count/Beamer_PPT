@@ -1,0 +1,3 @@
+tikz            Is used to plot
+pstricks
+metapost,gnuplot   图形语言
