@@ -1,0 +1,296 @@
+\documentclass[14pt]{beamer}
+\usetheme{Boadilla}
+\usecolortheme{whale}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{comment}
+
+%\setbeamertemplate{theorems}[numbered] 
+
+\usepackage{textcomp}
+\usepackage{float} 
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{adjustbox}
+\usepackage{epstopdf}
+\usetikzlibrary{arrows,decorations.pathreplacing,shapes}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{threeparttable}
+\usepackage{mathrsfs}
+\usepackage{arydshln}
+
+%\usepackage[UTF8, heading = false, scheme = plain]{ctex}
+
+
+\usepackage{amsfonts,amsthm,amssymb,amsmath}
+\usepackage{graphicx,mathrsfs}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{float} 
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+\usepackage{algorithm}
+%\usetikzlibrary{snakes}
+\usepackage{subfig}
+\usepackage{ragged2e}
+\usepackage{framed}
+\usepackage{multicol}
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
+
+\setbeamerfont{frametitle}{size=\large}
+
+
+% Setup appearance:
+
+
+\newcommand{\labelitemi}{$\bullet$}
+\newcommand{\BM}{\mathcal{B}} % Brownian motion
+\newcommand{\cl}[1]{\lceil{#1}\rceil} % ceiling of a number
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cc}{\mathbb{c}}
+
+
+
+% Author, Title, etc.
+
+\title[Stabilization via Pricing]
+{%
+	\large
+Stabilizing Grand Cooperation of Machine Scheduling Game via Setup Cost Pricing %
+}
+
+\author[Lindong Liu] % (optional, use only with lots of authors)
+%{F.~Author\inst{1} \and S.~Another\inst{2}}
+{   %  \textit{Supervisor:}
+  Lindong Liu
+}
+
+
+\date
+{NWPU-Online, July, 2020}
+
+\institute[] % (optional, but mostly needed)
+{\footnotesize
+	School of Management; International Institute of Finance\\
+	\vspace{2mm}
+	University of Science and Technology of China\\
+    \vspace{10mm}	
+	Co-authored with Zikang Li (PG Student, USTC)
+	\vspace{6mm}
+}
+
+
+
+% The main document
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Preliminaries}
+\begin{frame}
+\centering
+\large
+\textcolor{blue}{\bf {\huge P}RELIMINARIES}
+\end{frame}
+%\subsection{Supply Chain and Cooperation}
+%\subsection{Stabilizing the Cooperation}
+\begin{frame}{Cooperative Game}
+A cooperative game is defined by a pair $(V,C)$:
+\begin{itemize}
+\justifying
+	\item A set $V = \big\{1,2,\ldots,v\big\}$ of players, \textbf{grand colaition};
+%	\item $S = 2^V \setminus \{\emptyset\}$: set of all non-empty coalitions
+	\item A \textbf{characteristic function} $C(S)$ = the minimum total cost achieved by the cooperation of members in coalition $S \in \mathbb{S}=2^V \setminus \{\emptyset\}$.
+\end{itemize}
+
+~\\The game requires:
+\begin{itemize}
+\justifying
+	\item A cost allocation $\alpha=\big[\alpha_1,\alpha_2,\ldots,\alpha_v \big] \in \R^v$, where $\alpha_k$ = the cost allocated to each player $k\in V$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Core}
+Define $\alpha(S)=\sum_{k\in S}\alpha_k$. \\~\\
+A cost allocation $\alpha \in \R^v$ is in the \textbf{core} if it satisfies:
+\begin{itemize}
+\small
+\justifying
+	\item Budget Balance Constraint: $\alpha(V)=C(V)$;
+	\item Coalition Stability Constraints: $\alpha(S)\leq C(S)$ for each  $S\in \mathbb{S}$.
+\end{itemize}
+%\pause
+\vspace{-12pt}
+\begin{eqnarray*}
+\mathrm{Core}(V,C) = &&\bigg\{ \alpha:~ \alpha(V)=C(V), \\
+&& \alpha(S) \leq C(S), ~\forall S \in \mathbb{S} \setminus \{V\},~\alpha \in \R^v   \bigg\}.
+\end{eqnarray*}
+
+\pause
+\vspace{-12pt}
+\textcolor{red}{However, $\mathrm{Core}(V,c)$ can be empty.}
+\end{frame}
+
+
+\begin{frame}{Existing Instruments}
+\begin{small}
+\vspace{-5mm}
+\begin{eqnarray*}
+\mathrm{Core}(V,C) = \bigg\{ \alpha:~ \alpha(V)=C(V),  ~\alpha(S) \leq C(S), ~\forall S \in \mathbb{S} \setminus \{V\}  \bigg\}
+\end{eqnarray*}
+\end{small}
+\begin{itemize}
+\small
+\pause
+\item Subsidization: \textcolor{red}{$\alpha(V)=C(V)-\theta$}, \textbf{$\epsilon-$core};
+\pause
+\item Penalization: \textcolor{red}{$\alpha(S) \leq C(S)+z$}, \textbf{least core};
+\pause
+\item Simul. S \& P: \textcolor{red}{$\alpha(V)=C(V)-\theta$ and $\alpha(S) \leq C(S)+z$}, \textbf{PSF};
+\pause
+\item Inv. Opt.: Changing \textcolor{red}{$c$ to $d$} such that \textcolor{red}{$\mathrm{Core}(V,D)$} is non-empty.
+\end{itemize}
+\pause
+\vspace{-3mm}
+\begin{table}[t]
+	\small
+	\centering
+	\tabcolsep=1pt
+	%\small
+	\renewcommand\arraystretch{1.8}
+	\vglue5pt
+	\vspace{-3mm}
+	\begin{tabular}[!h]{c c}
+		\hline
+		S.	&Caprara and Letchford (2010, MP), \textcolor{blue}{Liu et al. (2016, IJOC)}\\
+		P.	&Faigle et al. (2001, IJGT), Schulz and Uhan (2010, OR)\\
+		P\&S	&\textcolor{blue}{Liu et al. (2018, OR)}\\
+		Inv. Opt.	&\textcolor{blue}{Liu et al. (2020, under review)}\\
+		\hline
+	\end{tabular}
+	\vspace{-3mm}
+	%c(V)=115
+\end{table}
+\end{frame}
+
+\section{Motivation and Illustrative Example}
+\begin{frame}
+\centering
+\large
+\textcolor{blue}{\bf {\huge I}LLUSTRATIVE  {\huge E}XAMPLE}
+\end{frame}
+
+\begin{frame}{Example of Single Machine Scheduling Game}
+
+\end{frame}
+
+
+\section{Models and Analyses}
+\begin{frame}
+\centering
+\large
+\textcolor{blue}{\bf {\huge M}ODELS \&  {\huge A}NALYSES}
+\end{frame}
+
+\begin{frame}{Problem Definition and Formulation}
+
+\end{frame}
+
+\begin{frame}{Properties}
+
+\end{frame}
+
+
+\section{Algorithms and Computations}
+\begin{frame}
+\centering
+\large
+\textcolor{blue}{\bf {\huge A}LGORITHMS \&  {\huge C}OMPUTATIONS}
+\end{frame}
+
+\begin{frame}{... Algorithm}
+
+\end{frame}
+
+\begin{frame}{Computational Results}
+
+\end{frame}
+
+\section{Extension and Generalization}
+\begin{frame}
+\centering
+\large
+\textcolor{blue}{\bf {\huge E}XTENSION \&  {\huge G}ENERALIZATION}
+\end{frame}
+
+\begin{frame}{Machine Scheduling Game with Weighted Jobs}
+
+\end{frame}
+
+\begin{frame}{Pricing in General IM Games}
+
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusions}
+\centering
+\large
+\vspace{1mm}
+\textcolor{blue}{\bf {\huge C}ONCLUSIONS}
+\vspace{2mm}
+\begin{itemize}
+\normalsize
+\justifying
+\item[$\star$] \textcolor{purple}{Cooperative Game Theory}:
+\begin{itemize}
+\small
+\vspace{2mm}
+\item[$-$] {New Instrument for Stabilization via Cost Adjustment}.
+\vspace{2mm}
+\end{itemize}
+\item[$\star$] \textcolor{purple}{Inverse Problem}:
+\begin{itemize}
+\small
+\vspace{2mm}
+\item[$-$] Constrained Inverse Optimization Problem.
+\vspace{2mm}
+\end{itemize}
+\item[$\star$] \textcolor{purple}{Models, Solution Methods and Applications}:
+\begin{itemize}
+\small
+\vspace{2mm}
+\item[$-$] Several equivalent LP formulations;
+\vspace{2mm}
+\item[$-$] Feasibility analyses \& How to handle infeasibility;
+\vspace{2mm}
+\item[$-$] Implementations on WMG and UFL games.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The End}
+\begin{center}
+	\begin{LARGE}
+		Thank you!
+	\end{LARGE}
+\end{center}
+\end{frame}
+\end{document}
