@@ -349,50 +349,92 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 	\begin{definition}\label{definition:IVPU}
 	\small
 	\justifying
-	A cooperative TU game (V,c) is called an Identical Variable Parallel machine scheduling of Unweighted jobs(IVPU) if it satisfies the following formulations:\\
+	An Identical Variable Parallel machine scheduling of Unweighted jobs game~(IVPU):\\
 	\begin{itemize}
 	\pause
-	\item \textcolor{red}{Optimality:} an initial feasible solution $x^0$ is optimal to $D(V)$;
+	\item \textcolor{red}{Grand coalition:} $V = \{1,2,\ldots,v\}$;
 	\pause
-	\item \textcolor{red}{Consistency:} the social optimum is consistent $C(V)=D(V)$;
+	\item \textcolor{red}{Identical machine:} $M = \{1,2,\ldots,m\}$;
 	\pause
-	\item \textcolor{red}{Balancedness:} the updated IM game $(V,D)$ is balanced.
+	\item \textcolor{red}{Each machine Price:} $P$ \text{and} \textcolor{red}{Each job processing time:} $t_k$;
+	\pause
+	\item \textcolor{red}{Characteristic function:} $c(S) = \min(\sum_{k\in S}C_k + Pm_S)$,\\
+	\vspace{3mm}
+	where $C_k$ is the completion time of job $k \in S$ and $m_S$ is the number of using machine for the sub-coalition $S$.
 	\end{itemize}
-	\pause
-	\vspace{-3mm}
-	\begin{eqnarray*}\label{eqn:inverse}
-	~~\min_{\delta} \bigg\{f(\delta):~ d \in \mathbb{O}, ~D(V) = C(V), ~dx^0 = D(V),~\delta = d-c\bigg\},
-	\end{eqnarray*}
-	where $f(\delta) = \omega \times |\delta|$ \textcolor{purple}{($L_1$ norm)}; $\mathbb{O}$ is the Balanced Cost Vector Set.
 	\end{definition}
 \end{frame}
-
 
 \begin{frame}{Problem Definition and Formulation}
 	\begin{definition}\label{definition:IVPU}
 	\small
 	\justifying
-	A cooperative TU game (V,c) is called an Identical Variable Parallel machine scheduling of Unweighted jobs~(IVPU) if it satisfies the following formulations:\\
+	A cooperative TU game (V,c) is called an IVPU game if it satisfies the following formulations:\\
 	\pause
 	\vspace{-8mm}
 	\begin{eqnarray*}\label{eqn:IVPU}
 	\begin{aligned}
-	c(s,P) = & {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in s} x_{k1}} \\
+	c(S,P) = & {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in s} x_{k1}} \\
 	{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^s=0, \forall k \in V, \\
 	& \sum_{k\in V} x_{kj} \leq m,\forall j \in O,  \\
 	& x_{kj} \in \{0,1\} , \forall k \in V, \forall j \in O,\\
 	& y_k^s=1, k \in s~; y_k^s=0, k \notin s.
 	\end{aligned}
 	\end{eqnarray*}
-
 	\end{definition}
+\end{frame}
+
+\begin{frame}{Properties}
+	\begin{definition}\label{definition:subinterval}
+	\small
+	\justifying
+	\begin{itemize}
+	\item The interval $[P_L(m,S),P_H(m,S)]$ denotes the value range of price when the number of using machines $m$ and the coalition $S$ are given.
+	\pause
+	\item For the grand coalition $V$, define $P_L(v,V) = 0, P_H(1,V) = P^*$. So the practical domain of the price is $[0,P^*]$ which is divided into $v$ nonoverlapping subintervals by the number of using machines.
+	\pause
+	\item Denote the right end of every subinterval as $P_i, 1 \leq i \leq v$, where $P_1 = P^*$.
+	\end{itemize}
+	\end{definition}
+\end{frame}
+
+\begin{frame}{Properties}
+	\vspace{-12mm}
+		\begin{eqnarray*}
+		\textcolor{red}{\omega(P)} & =\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
+		 &\alpha(s)\leq c(s,m(s,P)),\forall s \in S, \alpha\in\mathbb{R}^{v}\};
+		\end{eqnarray*}
+
+		\begin{itemize}
+		\justifying
+			\pause
+			\item ${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval;
+			\pause
+			\item $\omega(P)$ can be bounded by zero when the number of using machines, m, is larger than $\frac{n}{2}$.
+			\pause
+			\item $P_i, 2 \leq i \leq v$ can be obtained by SPT rules.
+			\pause
+			\item $P_{1}=P_{2}+\cdots+P_{n}=\sum_{i=2}^n P_i$.
+
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Properties}
+	\vspace{-1mm}
+		\begin{itemize}
+		\justifying
+			\item When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$};
+			\pause
+			\item Define that
+			\begin{eqnarray*}
+			{\omega_1(P)}=&\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
+			&\alpha(s)\leq c(s)+P,\forall s \in S, \alpha\in\mathbb{R}^{v}\}
+			\end{eqnarray*}
+			Then the original problem $\omega(P)$ is equivalent to $\omega_1(P)$ which means that all sub-coalitions only use \textcolor{red}{one} machine.
 
+	\end{itemize}
 \end{frame}
-
 
 \section{Algorithms and Computations}
 \begin{frame}
@@ -401,12 +443,39 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \textcolor{blue}{\bf {\huge A}LGORITHMS \&  {\huge C}OMPUTATIONS}
 \end{frame}
 
-\begin{frame}{... Algorithm}
+\begin{frame}{IPC Algorithm}
+	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
+	\begin{description}
+	\justifying
+	\footnotesize
+		\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
+		\item[Step 2.] When $\mathbb{I}$ is not empty: Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
+		\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+	\end{description}
 
 \end{frame}
 
 \begin{frame}{Computational Results}
 
+\end{frame}
+
+\begin{frame}{Instrument 1: LRB Cost Allocation}
+\begin{description}
+\justifying
+\footnotesize
+	\item[Step 1.] \textcolor{red}{Find an LP $\min_x \big\{cx:Gx \geq F\gamma^s\big\}$} giving a \textcolor{red}{lower bound $\pi_{\mathrm{LP}}(S)$ to $\pi(S)$};
+	\item[Step 2.] \textcolor{red}{Compute $\big(\alpha^{GF}_{LP}\big)_j = \big(\mu^*\big)^T F_{\cdot j}$}, where $\mu^*$: dual solution; $F_{\cdot j}$: $j$-th column.
+	\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+\end{description}
+\end{frame}
+
+\begin{frame}{Image}
+	\vspace{-3mm}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Figures/Image30}
+	\end{figure}
+	\centering
 \end{frame}
 
 \section{Extension and Generalization}
