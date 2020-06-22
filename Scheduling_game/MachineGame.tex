@@ -4,10 +4,10 @@
 \setbeamertemplate{navigation symbols}{}
 \usepackage{comment}
 
-%\setbeamertemplate{theorems}[numbered] 
+%\setbeamertemplate{theorems}[numbered]
 
 \usepackage{textcomp}
-\usepackage{float} 
+\usepackage{float}
 \usepackage{multirow}
 \usepackage{comment}
 \usepackage{enumitem}
@@ -29,7 +29,7 @@
 \usepackage{graphicx,mathrsfs}
 \usepackage{adjustbox}
 \usepackage{multirow}
-\usepackage{float} 
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{backgrounds}
@@ -79,7 +79,7 @@ Stabilizing Grand Cooperation of Machine Scheduling Game via Setup Cost Pricing 
 	School of Management; International Institute of Finance\\
 	\vspace{2mm}
 	University of Science and Technology of China\\
-    \vspace{10mm}	
+    \vspace{10mm}
 	Co-authored with Zikang Li (PG Student, USTC)
 	\vspace{6mm}
 }
@@ -112,30 +112,30 @@ Stabilizing Grand Cooperation of Machine Scheduling Game via Setup Cost Pricing 
 %\subsection{Supply Chain and Cooperation}
 %\subsection{Stabilizing the Cooperation}
 \begin{frame}{Cooperative Game}
-A cooperative game is defined by a pair $(V,C)$:
+A \textcolor{red}{\bf cooperative game} is defined by a pair $(V,C)$:
 \begin{itemize}
 \justifying
-	\item A set $V = \big\{1,2,\ldots,v\big\}$ of players, \textbf{grand colaition};
+	\item A set $V = \big\{1,2,\ldots,v\big\}$ of players, \textcolor{red}{\bf grand colaition};
 %	\item $S = 2^V \setminus \{\emptyset\}$: set of all non-empty coalitions
-	\item A \textbf{characteristic function} $C(S)$ = the minimum total cost achieved by the cooperation of members in coalition $S \in \mathbb{S}=2^V \setminus \{\emptyset\}$.
+	\item A \textcolor{red}{\bf characteristic function} $C(S)$ = the minimum total cost achieved by the cooperation of members in coalition $S \in \mathbb{S}=2^V \setminus \{\emptyset\}$.
 \end{itemize}
 
 ~\\The game requires:
 \begin{itemize}
 \justifying
-	\item A cost allocation $\alpha=\big[\alpha_1,\alpha_2,\ldots,\alpha_v \big] \in \R^v$, where $\alpha_k$ = the cost allocated to each player $k\in V$.
+	\item A \textcolor{red}{\bf cost allocation} $\alpha=\big[\alpha_1,\alpha_2,\ldots,\alpha_v \big] \in \R^v$, where $\alpha_k$ = the cost allocated to each player $k\in V$.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Core}
 Define $\alpha(S)=\sum_{k\in S}\alpha_k$. \\~\\
-A cost allocation $\alpha \in \R^v$ is in the \textbf{core} if it satisfies:
+A cost allocation $\alpha \in \R^v$ is in the \textcolor{red}{\bf core} if it satisfies:
 \begin{itemize}
 \small
 \justifying
-	\item Budget Balance Constraint: $\alpha(V)=C(V)$;
-	\item Coalition Stability Constraints: $\alpha(S)\leq C(S)$ for each  $S\in \mathbb{S}$.
+	\item \textcolor{red}{\bf Budget Balance} Constraint: $\alpha(V)=C(V)$;
+	\item \textcolor{red}{\bf Coalition Stability} Constraints: $\alpha(S)\leq C(S)$ for each  $S\in \mathbb{S}$.
 \end{itemize}
 %\pause
 \vspace{-12pt}
@@ -198,9 +198,143 @@ A cost allocation $\alpha \in \R^v$ is in the \textbf{core} if it satisfies:
 \textcolor{blue}{\bf {\huge I}LLUSTRATIVE  {\huge E}XAMPLE}
 \end{frame}
 
-\begin{frame}{Example of Single Machine Scheduling Game}
 
+\begin{frame}{Example: Machine Scheduling Game (MSG)}
+\small
+%\begin{example}[SMW Game]
+\textcolor{blue}{Game of Parallel Machine Scheduling with Setup Cost:}
+\vspace{2mm}
+	\begin{itemize}
+	\justifying
+		\item Grand coalition: $V = \big\{ 1,2,3,4 \big\}$;
+		\item Processing times: $t_1=2$, $t_2=3$, $t_3=4$, $t_4=5$;
+		\item Machine setup cost: $t_0 = 9.5$;
+		\item $c(S)$ for $S\in \mathbb{S}$:  minimizes the total completion time of jobs in $S$ plus the machine setup cost;
+		\item \textcolor{red}{$\pi(N)= \pi(\{1,3\}) + \pi(\{2,4\})= 38$ (SPT Rule).}
+
+\vspace{6pt}
+%\begin{center}
+{
+\centering
+\scalebox{0.8}{
+\begin{tikzpicture}[x=1cm,y=1.5cm,scale=0.8]
+% draw horizontal line
+\draw (0,0) -- (6,0);
+
+\draw (8,0) -- (16,0);
+
+% draw vertical lines
+%\def\vectime{{0,5,11,18,26}}
+%\def\vectimeb{{0,2.5,8,14.5,22}}
+\foreach[count=\i] \x in {0,2,6}
+{
+	\draw (\x,3pt) -- (\x,-3pt);
+	\draw (\x,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+%	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
+%	\x = \vectime[\i];
+%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+}
+\foreach[count=\i] \x in {0,3,8}
+{
+	\draw (\x+8,3pt) -- (\x+8,-3pt);
+	\draw (\x+8,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+%	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
+%	\x = \vectime[\i];
+%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+}
+
+\draw (1,0) node[above=3pt] {job 1};
+\draw (4,0) node[above=3pt] {job 3};
+\draw (10,0) node[above=3pt] {job 2};
+\draw (13,0) node[above=3pt] {job 4};
+
+\end{tikzpicture}
+}
+\par
+}
+%\pause
+
+\end{itemize}
 \end{frame}
+
+
+\begin{frame}{Example: Empty Core}
+\small
+\vspace{-4mm}
+\begin{columns}
+\begin{column}{4.5cm}
+\begin{table}[H]
+\centering
+\tabcolsep=8pt
+\footnotesize
+\renewcommand\arraystretch{1.1}
+%\caption{\label{table:examplecost} Coalitional cost}
+\vglue5pt
+\vspace{-3mm}
+\begin{tabular}[!h]{c c }
+\hline
+\multicolumn{1}{c}{Coalitions} &\multicolumn{1}{c}{Cost}\\
+\hline
+$\{1\}$		&11.5	\\
+
+$\{2\}$		&12.5	\\
+
+$\{3\}$		&13.5	\\
+
+$\{4\}$		&14.5  \\
+
+$\{1,2\}$		&16.5	\\
+
+$\{1,3\}$		&17.5	\\
+
+$\{1,4\}$		&18.5	\\
+
+$\{2,3\}$		&19.5	\\
+
+$\{2,4\}$		&20.5	\\
+
+$\{3,4\}$		&22.5	\\
+
+$\{1,2,3\}$		&25.5	\\
+
+$\{1,2,4\}$		&26.5	\\
+
+$\{1,3,4\}$		&28.5	\\
+
+$\{2,3,4\}$		&31.5	\\
+
+\textcolor{blue}{$\{1,2,3,4\}$}	&\textcolor{blue}{38}	\\
+\hline
+\end{tabular}
+\end{table}
+\end{column}
+\pause
+\begin{column}{6.5cm}
+\footnotesize
+\vspace{-1em}
+\begin{shaded}
+\centering
+Optimal Cost Allocation Problem
+\begin{eqnarray*}
+\begin{aligned}
+\max ~\big(\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4\big) &= \textcolor{red}{37.25 < 38}\\
+s.t.~~ \alpha_1 \leq 11.5,~\cdots,&~\alpha_4 \leq 14.5,\\
+\alpha_1 + \alpha_2 \leq 16.5,~\cdots,~ &\alpha_3+\alpha_4 \leq 22.5,\\
+~~~~~~~~~~\cdots,~~&\\
+\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 &\leq 38.
+\end{aligned}
+\end{eqnarray*}
+\vspace{-0.5em}
+\end{shaded}
+\begin{shaded}
+\centering
+\textcolor{blue}{
+$\alpha^* = \big[6;8.75;10.75;11.75\big]$}
+\end{shaded}
+\end{column}
+\end{columns}
+\end{frame}
+
 
 
 \section{Models and Analyses}
@@ -210,9 +344,50 @@ A cost allocation $\alpha \in \R^v$ is in the \textbf{core} if it satisfies:
 \textcolor{blue}{\bf {\huge M}ODELS \&  {\huge A}NALYSES}
 \end{frame}
 
-\begin{frame}{Problem Definition and Formulation}
 
+\begin{frame}{Problem Definition and Formulation}
+	\begin{definition}\label{definition:IVPU}
+	\small
+	\justifying
+	A cooperative TU game (V,c) is called an Identical Variable Parallel machine scheduling of Unweighted jobs(IVPU) if it satisfies the following formulations:\\
+	\begin{itemize}
+	\pause
+	\item \textcolor{red}{Optimality:} an initial feasible solution $x^0$ is optimal to $D(V)$;
+	\pause
+	\item \textcolor{red}{Consistency:} the social optimum is consistent $C(V)=D(V)$;
+	\pause
+	\item \textcolor{red}{Balancedness:} the updated IM game $(V,D)$ is balanced.
+	\end{itemize}
+	\pause
+	\vspace{-3mm}
+	\begin{eqnarray*}\label{eqn:inverse}
+	~~\min_{\delta} \bigg\{f(\delta):~ d \in \mathbb{O}, ~D(V) = C(V), ~dx^0 = D(V),~\delta = d-c\bigg\},
+	\end{eqnarray*}
+	where $f(\delta) = \omega \times |\delta|$ \textcolor{purple}{($L_1$ norm)}; $\mathbb{O}$ is the Balanced Cost Vector Set.
+	\end{definition}
 \end{frame}
+
+
+\begin{frame}{Problem Definition and Formulation}
+	\begin{definition}\label{definition:IVPU}
+	\small
+	\justifying
+	A cooperative TU game (V,c) is called an Identical Variable Parallel machine scheduling of Unweighted jobs~(IVPU) if it satisfies the following formulations:\\
+	\pause
+	\vspace{-8mm}
+	\begin{eqnarray*}\label{eqn:IVPU}
+	\begin{aligned}
+	c(s,P) = & {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in s} x_{k1}} \\
+	{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^s=0, \forall k \in V, \\
+	& \sum_{k\in V} x_{kj} \leq m,\forall j \in O,  \\
+	& x_{kj} \in \{0,1\} , \forall k \in V, \forall j \in O,\\
+	& y_k^s=1, k \in s~; y_k^s=0, k \notin s.
+	\end{aligned}
+	\end{eqnarray*}
+
+	\end{definition}
+\end{frame}
+
 
 \begin{frame}{Properties}
 
