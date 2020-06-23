@@ -455,19 +455,35 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 
 \end{frame}
 
+\begin{frame}{CP Algorithm}
+	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
+	\begin{description}
+	\justifying
+	\footnotesize
+		\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
+		\item[Step 2.] When $\mathbb{I}$ is not empty: Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
+		\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+	\end{description}
+
+\end{frame}
+
+
+\begin{frame}{DP Algorithm}
+	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
+	\begin{description}
+	\justifying
+	\footnotesize
+		\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
+		\item[Step 2.] When $\mathbb{I}$ is not empty: Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
+		\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+	\end{description}
+
+\end{frame}
+
 \begin{frame}{Computational Results}
 
 \end{frame}
 
-\begin{frame}{Instrument 1: LRB Cost Allocation}
-\begin{description}
-\justifying
-\footnotesize
-	\item[Step 1.] \textcolor{red}{Find an LP $\min_x \big\{cx:Gx \geq F\gamma^s\big\}$} giving a \textcolor{red}{lower bound $\pi_{\mathrm{LP}}(S)$ to $\pi(S)$};
-	\item[Step 2.] \textcolor{red}{Compute $\big(\alpha^{GF}_{LP}\big)_j = \big(\mu^*\big)^T F_{\cdot j}$}, where $\mu^*$: dual solution; $F_{\cdot j}$: $j$-th column.
-	\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
-\end{description}
-\end{frame}
 
 \begin{frame}{Image}
 	\vspace{-3mm}
@@ -507,10 +523,10 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \begin{itemize}
 \small
 \vspace{2mm}
-\item[$-$] {New Instrument for Stabilization via Cost Adjustment}.
+\item[$-$] {New Instrument for Stabilization via Setup cost Pricing}.
 \vspace{2mm}
 \end{itemize}
-\item[$\star$] \textcolor{purple}{Inverse Problem}:
+\item[$\star$] \textcolor{purple}{Scheduling Problem}:
 \begin{itemize}
 \small
 \vspace{2mm}
