@@ -444,38 +444,91 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \end{frame}
 
 \begin{frame}{IPC Algorithm}
+	\vspace{-13mm}
 	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
 	\begin{description}
 	\justifying
 	\footnotesize
-		\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
-		\item[Step 2.] When $\mathbb{I}$ is not empty: Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
-		\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+	\vspace{3mm}
+	\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
+  \item[Step 2.] If $\mathbb{I}$ is not empty, update $I^*$ and $\mathbb{I}$ by the following steps:
+  \item[Step 3.] Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
+  \item[Step 4.]
+  Select any interval from $\mathbb{I}$, denoted by $[P_{k-1},P_{k}]$ with $1\leq k \leq q$.
+	\item[Step 5.]
+	Construct two linear function $ R_{k-1}(P)$ and $ L_{k}(P)$ so that $ R_{k-1}(P)$ passes $(P_{k-1},\omega(P_{k-1}))$ with a slope equal to a right derivative $K_{r}^{P_{k-1}}$ of $\omega(P)$ at $P_{k-1}$, and that $L_{k}(z)$ passes $(P_{k},\omega(P_{k}))$ with a slope equal to a left derivative $K_{l}^{P_{k}}$ of $\omega(P)$ at $P_k$.
 	\end{description}
-
 \end{frame}
 
-\begin{frame}{CP Algorithm}
-	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
+\begin{frame}{IPC Algorithm}
 	\begin{description}
 	\justifying
 	\footnotesize
-		\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
-		\item[Step 2.] When $\mathbb{I}$ is not empty: Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
-		\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+  \item[Step 6.] If $R_{k-1}(P)$ passes $(P_{k},\omega(P_{k}))$ or $L_{k}(P)$ passes $(P_{k-1},\omega(P_{k-1}))$, then update $\mathbb{I}$ by removing
+  $[P_{k-1},P_{k}]$. Otherwise, $R_{k-1}(P)$ and $L_{k}(P)$ must have a unique intersection point at $P=P'$ for some $P' \in (P_{k-1},P_{k})$.
+  Update $I^*$ by adding $P^'$, and update $\mathbb{I}$ by removing $[P_{k-1},P_{k}]$, adding $[P_l,P']$ and $[P',P_r]$.
+  \item[Step 7.] Go to step 2.
+  \item[Step 8.] Return a piecewise linear function by connecting points $(P,\omega(P))$ for all $P \in I^*$.
+	\end{description}
+\end{frame}
+
+
+
+\begin{frame}{IPC Algorithm}
+	\vspace{-3mm}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Figures/IPC}
+	\end{figure}
+	\centering
+\end{frame}
+
+
+\begin{frame}{CP Algorithm}
+	The Cutting Plane(CP) Algorithm to compute $\omega(P)$ for a given $P$.
+	\begin{description}
+	  \justifying
+		\footnotesize
+	  \item[Step 1.] Let $\mathbb{S}'\subseteq \mathbb{S}\setminus \{N\}$ indicates a restricted coalition set, which includes some initial coalitions,
+	  \vspace{10pt}
+	  e.g.,$ \{1\},\{2\},\ldots,\{v\}$.
+	  \item[Step 2.] Find an optimal solution $\bar{\alpha}(\ \cdot \ ,P)$ to LP $\tau(P)$:
+	  \begin{equation*}
+	  \max_{\alpha\in \mathbb{R}^n} \big\{ \alpha(N,P): \alpha(s,P) \leq c(s)+P, \mbox{ for all } s \in \mathbb{S}'\big\}.
+	  \end{equation*}
+	  \vspace{-11pt}
+	  \item[Step 3.]
+	  Find an optimal solution $s^*$ to the separation problem:
+	  \begin{equation*}
+	  \delta = \min \big\{ c(s)+ P -\bar{\alpha}(s,z): \forall s \in \mathbb{S} \setminus \{N\}\big\}.
+	  \end{equation*}
+	  \item[Step 4.]
+	  If $\delta<0$, then add $s^*$ to $\mathbb{S}'$, and go to step 2; otherwise, return $\omega(P)=c(N)-\bar{\alpha}(N,P)$.
 	\end{description}
 
 \end{frame}
 
 
 \begin{frame}{DP Algorithm}
-	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
+	The Dynamic Programming(DP) Algorithm to Calculate c(S).
 	\begin{description}
 	\justifying
 	\footnotesize
-		\item[Step 1.] Initially, set $I^*=\{P_L,P_H\}$ and $\mathbb{I}= \{[P_L,P_H]\}$.
-		\item[Step 2.] When $\mathbb{I}$ is not empty: Sort values in $I^*$ by $P_0<P_1<\cdots<P_q$, where $P_0 = P_L,P_q = P_H$ and $q = |I^*|-1$.
-		\item[Step 3.] \textcolor{red}{Obtain an LPB cost allocation $\alpha^{GF}_{LP}$} with \textcolor{red}{$\alpha^{GF}_{LP}(N) = \pi_{\mathrm{LP}}(N)$}.
+	\item[Step 1.] Initially, let $D(k,u)$ indicate the minimum objective value of the restricted problem of separation problem, where $k\in \{1,2,\ldots,v\}$ and $u\in \{0,1,\ldots,v\}$.
+	\item[Step 2.] Given the initial conditions $D(1,0) = P$ and $D(1,1) = t_1 - \beta_1 +P$. The boundary conditions are $D(k,u) = \infinity$ if $u > k$, for all $k \in V$.
+	\item[Step 3.] Given the recursion:
+	\begin{equation*}
+	D(k,u)= \min \left\{
+	\begin{aligned}
+	& D(k-1,u), \text{for the case when} \ s^* \ \text{does not contain} \ k, \\
+	& D(k-1,u-1) + u t_k - \alpha_k ,\text{for the case when} \ s^* \ \text{contains} \ k.
+	\end{aligned}
+	\right.
+	\end{equation*}
+
+\item[Step 4.] Obtain the optimal objective value of separation problem by
+$\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
+ return $\delta_{AIPU}$.
 	\end{description}
 
 \end{frame}
@@ -502,11 +555,27 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \end{frame}
 
 \begin{frame}{Machine Scheduling Game with Weighted Jobs}
-
+	\begin{itemize}
+	\justifying
+		\item ${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval;
+		\item $\omega(P)$ can be bounded by zero when the number of using machines, m, is larger than $\frac{n}{2}$.
+		\item $P_i, 2 \leq i \leq v$ can be obtained by SPT rules.
+		\item $P_{1}=P_{2}+\cdots+P_{n}=\sum_{i=2}^n P_i$.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Pricing in General IM Games}
-
+	\begin{itemize}
+	\justifying
+		\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,n.$;
+		\item
+		\begin{equation*}
+			\begin{aligned}
+				&c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \\
+				&\Leftrightarrow \quad P_m < P_{m+1} , m=2,3,\ldots,n.
+			\end{aligned}
+		\end{equation*}
+	\end{itemize}
 \end{frame}
 
 \section{Conclusion}
@@ -541,7 +610,7 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \vspace{2mm}
 \item[$-$] Feasibility analyses \& How to handle infeasibility;
 \vspace{2mm}
-\item[$-$] Implementations on WMG and UFL games.
+\item[$-$] Implementations on MSGW game.
 \end{itemize}
 \end{itemize}
 \end{frame}
