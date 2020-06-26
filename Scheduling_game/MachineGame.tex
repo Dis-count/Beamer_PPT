@@ -510,7 +510,7 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 
 
 \begin{frame}{DP Algorithm}
-	The Dynamic Programming(DP) Algorithm to Calculate c(S).
+	The Dynamic Programming(DP) Algorithm to solve separation problem.
 	\begin{description}
 	\justifying
 	\footnotesize
@@ -557,10 +557,10 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 \begin{frame}{Machine Scheduling Game with Weighted Jobs}
 	\begin{itemize}
 	\justifying
-		\item ${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval;
-		\item $\omega(P)$ can be bounded by zero when the number of using machines, m, is larger than $\frac{n}{2}$.
-		\item $P_i, 2 \leq i \leq v$ can be obtained by SPT rules.
-		\item $P_{1}=P_{2}+\cdots+P_{n}=\sum_{i=2}^n P_i$.
+		\item ${\omega(P)}$ is piecewise linear, and the slope is $m(V)-\sum_{s\in S\setminus\{V\}}\rho_sm(S)$.
+		\item $c(S)$ is not so easy to obtain.
+		\item $P_m = c_0(V,m)- c_0(V,m-1), 2 \leq m \leq v$.
+		\item Separation problem can be solved in pseudo-polynomial time.
 \end{itemize}
 \end{frame}
 
@@ -568,13 +568,7 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 	\begin{itemize}
 	\justifying
 		\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,n.$;
-		\item
-		\begin{equation*}
-			\begin{aligned}
-				&c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \\
-				&\Leftrightarrow \quad P_m < P_{m+1} , m=2,3,\ldots,n.
-			\end{aligned}
-		\end{equation*}
+		\item $c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \Leftrightarrow \quad P_m < P_{m+1} , m=2,3,\ldots,n.$
 	\end{itemize}
 \end{frame}
 
