@@ -374,11 +374,11 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 	\vspace{-8mm}
 	\begin{eqnarray*}\label{eqn:IVPU}
 	\begin{aligned}
-	c(S,P) = & {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in s} x_{k1}} \\
-	{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^s=0, \forall k \in V, \\
+	c(S,P) = & {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} x_{k1}} \\
+	{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^S=0, \forall k \in V, \\
 	& \sum_{k\in V} x_{kj} \leq m,\forall j \in O,  \\
 	& x_{kj} \in \{0,1\} , \forall k \in V, \forall j \in O,\\
-	& y_k^s=1, k \in s~; y_k^s=0, k \notin s.
+	& y_k^S=1, k \in S~; y_k^S=0, k \notin S.
 	\end{aligned}
 	\end{eqnarray*}
 	\end{definition}
@@ -498,7 +498,7 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 	  \end{equation*}
 	  \vspace{-11pt}
 	  \item[Step 3.]
-	  Find an optimal solution $s^*$ to the separation problem:
+	  Find an optimal solution $s^*$ to \textcolor{red}{the separation problem}:
 	  \begin{equation*}
 	  \delta = \min \big\{ c(s)+ P -\bar{\alpha}(s,z): \forall s \in \mathbb{S} \setminus \{N\}\big\}.
 	  \end{equation*}
@@ -510,7 +510,7 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 
 
 \begin{frame}{DP Algorithm}
-	The Dynamic Programming(DP) Algorithm to solve separation problem.
+	The Dynamic Programming(DP) Algorithm to solve the separation problem.
 	\begin{description}
 	\justifying
 	\footnotesize
@@ -534,11 +534,6 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 \end{frame}
 
 \begin{frame}{Computational Results}
-
-\end{frame}
-
-
-\begin{frame}{Image}
 	\vspace{-3mm}
 	\begin{figure}[H]
 	\centering
@@ -557,18 +552,35 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 \begin{frame}{Machine Scheduling Game with Weighted Jobs}
 	\begin{itemize}
 	\justifying
-		\item ${\omega(P)}$ is piecewise linear, and the slope is $m(V)-\sum_{s\in S\setminus\{V\}}\rho_sm(S)$.
-		\item $c(S)$ is not so easy to obtain.
+		\item Each job $k \in V$ has a processing time and a weight denoted by $t_k,\omega_k$, respectively.
+		\vspace{2pt}
+		\item $c(S)$ can be obtained by assuming that\\
+		\quad $t_1/\omega_1 \leq t_2/\omega_2 \leq \ldots \leq t_v/\omega_v$.
+		\vspace{2pt}
 		\item $P_m = c_0(V,m)- c_0(V,m-1), 2 \leq m \leq v$.
-		\item Separation problem can be solved in pseudo-polynomial time.
+		\item ${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval.
+		\vspace{2pt}
+		\item The separation problem can be solved in polynomial time.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Pricing in General IM Games}
 	\begin{itemize}
 	\justifying
-		\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,n.$;
-		\item $c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \Leftrightarrow \quad P_m < P_{m+1} , m=2,3,\ldots,n.$
+		\item \textcolor{red}{$ILP:$}
+		$c(S,m(S,P))= \mathop{\min}_{x} \{ cx+Pm(x): Ax \geq By^s+D, \tilde{\alpha}x \leq m, x \in \mathbb{Z}^{t \times 1} \}$
+		\vspace{2pt}
+		\item \textcolor{blue}{Decompose} $c(S,m(S,P))$ into $\textcolor{blue}{c_0(S,m(S))}+Pm.$
+		\vspace{2pt}
+		\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,v.$
+		\item $c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \Leftrightarrow \quad P_m < P_{m+1} , m=2,3,\ldots,v-1.$
+		\vspace{3pt}
+		\footnotesize
+		\item $c_0(S_1,m-1)-c_0(S_1,m) \geq
+  c_0(S_1,m)-c_0(S_1,m+1) \quad m=2,\ldots,v-1.$
+		\item $	c_0(S_1,m-1)-c_0(S_1,m) \leq
+	  c_0(S_2,m-1)-c_0(S_2,m) \\
+		\quad \quad m=2,\ldots,v$, where ~$S_1 \subset S_2$.
 	\end{itemize}
 \end{frame}
 
@@ -593,18 +605,18 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 \begin{itemize}
 \small
 \vspace{2mm}
-\item[$-$] Constrained Inverse Optimization Problem.
+\item[$-$] Parallel Machine Scheduling with Setup Cost.
 \vspace{2mm}
 \end{itemize}
 \item[$\star$] \textcolor{purple}{Models, Solution Methods and Applications}:
 \begin{itemize}
 \small
 \vspace{2mm}
-\item[$-$] Several equivalent LP formulations;
+\item[$-$] Several ILP formulations;
 \vspace{2mm}
-\item[$-$] Feasibility analyses \& How to handle infeasibility;
+\item[$-$] Cutting Plane to solve the seperation problem;
 \vspace{2mm}
-\item[$-$] Implementations on MSGW game.
+\item[$-$] Implementations on the MSGW game.
 \end{itemize}
 \end{itemize}
 \end{frame}
