@@ -42,7 +42,7 @@
 \definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
 
 \setbeamerfont{frametitle}{size=\large}
-
+\setbeamerfont{block title}{size=\small}
 
 % Setup appearance:
 
@@ -53,7 +53,8 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\cc}{\mathbb{c}}
-
+% \newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}[numbered]
 
 
 % Author, Title, etc.
@@ -84,10 +85,7 @@ Stabilizing Grand Cooperation of Machine Scheduling Game via Setup Cost Pricing 
 	\vspace{6mm}
 }
 
-
-
 % The main document
-
 
 \begin{document}
 
@@ -443,24 +441,32 @@ For the grand coalition, it only needs one machine.}
 
 \begin{frame}{Properties}
 	\vspace{-12mm}
+	\small
 		\begin{eqnarray*}
 		\textcolor{red}{\omega(P)} & =\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
 		 &\alpha(s)\leq c(s,m(s,P)),\forall s \in S, \alpha\in\mathbb{R}^{v}\};
 		\end{eqnarray*}
+		\vspace{-10mm}
+		\footnotesize
+		\begin{block}{Theorem 1}
+		${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval $[P_L(m,V),P_H(m,V)]$ in $[0,P^*]$.
+		\end{block}
 
-		\begin{itemize}
-		\justifying
-			\pause
-			\item ${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval;
-			\pause
-			\item $\omega(P)$ can be bounded by zero when the number of using machines, m, is larger than $\frac{n}{2}$.
-			\pause
-			\item $P_i, 2 \leq i \leq v$ can be obtained by SPT rules.
-			\pause
-			\item $P_{1}=P_{2}+\cdots+P_{n}=\sum_{i=2}^n P_i$.
+		\begin{block}{Lemma 1}
+		$P_i, 2 \leq i \leq v$ can be obtained by SPT rules.
+		\end{block}
 
-	\end{itemize}
+		\begin{block}{Theorem 2}
+		$P_{1}=P_{2}+\cdots+P_{n}=\sum_{i=2}^n P_i$.
+		\end{block}
+
+		\begin{block}{Theorem 3}
+		$\omega(P)$ can be bounded by zero when the number of using machines, m, is larger than $\frac{n}{2}$.
+		\end{block}
+
 \end{frame}
+
+
 
 
 \begin{frame}{Properties}
