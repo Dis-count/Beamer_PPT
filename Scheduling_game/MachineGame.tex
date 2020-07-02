@@ -198,7 +198,6 @@ A cost allocation $\alpha \in \R^v$ is in the \textcolor{red}{\bf core} if it sa
 \textcolor{blue}{\bf {\huge I}LLUSTRATIVE  {\huge E}XAMPLE}
 \end{frame}
 
-
 \begin{frame}{Example: Machine Scheduling Game (MSG)}
 \small
 %\begin{example}[SMW Game]
@@ -211,51 +210,73 @@ A cost allocation $\alpha \in \R^v$ is in the \textcolor{red}{\bf core} if it sa
 		\item Machine setup cost: $t_0 = 9.5$;
 		\item $c(S)$ for $S\in \mathbb{S}$:  minimizes the total completion time of jobs in $S$ plus the machine setup cost;
 		\item \textcolor{red}{$\pi(N)= \pi(\{1,3\}) + \pi(\{2,4\})= 38$ (SPT Rule).}
-
-\vspace{6pt}
 %\begin{center}
-{
+
 \centering
-\scalebox{0.8}{
-\begin{tikzpicture}[x=1cm,y=1.5cm,scale=0.8]
-% draw horizontal line
-\draw (0,0) -- (6,0);
+\hspace{-1cm}
+\includegraphics[width = 0.9\textwidth]{Figures/m1.png}
 
-\draw (8,0) -- (16,0);
-
-% draw vertical lines
-%\def\vectime{{0,5,11,18,26}}
-%\def\vectimeb{{0,2.5,8,14.5,22}}
-\foreach[count=\i] \x in {0,2,6}
-{
-	\draw (\x,3pt) -- (\x,-3pt);
-	\draw (\x,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
-%	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
-%	\x = \vectime[\i];
-%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
-}
-\foreach[count=\i] \x in {0,3,8}
-{
-	\draw (\x+8,3pt) -- (\x+8,-3pt);
-	\draw (\x+8,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
-%	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
-%	\x = \vectime[\i];
-%	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
-}
-
-\draw (1,0) node[above=3pt] {job 1};
-\draw (4,0) node[above=3pt] {job 3};
-\draw (10,0) node[above=3pt] {job 2};
-\draw (13,0) node[above=3pt] {job 4};
-
-\end{tikzpicture}
-}
-\par
-}
 %\pause
-
 \end{itemize}
 \end{frame}
+
+% \begin{frame}{Example: Machine Scheduling Game (MSG)}
+% \small
+% %\begin{example}[SMW Game]
+% \textcolor{blue}{Game of Parallel Machine Scheduling with Setup Cost:}
+% \vspace{2mm}
+% 	\begin{itemize}
+% 	\justifying
+% 		\item Grand coalition: $V = \big\{ 1,2,3,4 \big\}$;
+% 		\item Processing times: $t_1=2$, $t_2=3$, $t_3=4$, $t_4=5$;
+% 		\item Machine setup cost: $t_0 = 9.5$;
+% 		\item $c(S)$ for $S\in \mathbb{S}$:  minimizes the total completion time of jobs in $S$ plus the machine setup cost;
+% 		\item \textcolor{red}{$\pi(N)= \pi(\{1,3\}) + \pi(\{2,4\})= 38$ (SPT Rule).}
+%
+% \vspace{6pt}
+% %\begin{center}
+% {
+% \centering
+% \scalebox{0.8}{
+% \begin{tikzpicture}[x=1cm,y=1.5cm,scale=0.8]
+% % draw horizontal line
+% \draw (0,0) -- (6,0);
+%
+% \draw (8,0) -- (16,0);
+%
+% % draw vertical lines
+% %\def\vectime{{0,5,11,18,26}}
+% %\def\vectimeb{{0,2.5,8,14.5,22}}
+% \foreach[count=\i] \x in {0,2,6}
+% {
+% 	\draw (\x,3pt) -- (\x,-3pt);
+% 	\draw (\x,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+% %	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
+% %	\x = \vectime[\i];
+% %	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+% }
+% \foreach[count=\i] \x in {0,3,8}
+% {
+% 	\draw (\x+8,3pt) -- (\x+8,-3pt);
+% 	\draw (\x+8,0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+% %	\draw (\vectime[\i],3pt) -- (\vectime[\i],-3pt);
+% %	\x = \vectime[\i];
+% %	\draw (\vectime[\i],0) node[below=3pt] {$\x$} node[above=3pt] {$   $};
+% }
+%
+% \draw (1,0) node[above=3pt] {job 1};
+% \draw (4,0) node[above=3pt] {job 3};
+% \draw (10,0) node[above=3pt] {job 2};
+% \draw (13,0) node[above=3pt] {job 4};
+%
+% \end{tikzpicture}
+% }
+% \par
+% }
+% %\pause
+%
+% \end{itemize}
+% \end{frame}
 
 
 \begin{frame}{Example: Empty Core}
@@ -311,7 +332,7 @@ $\{2,3,4\}$		&31.5	\\
 \pause
 \begin{column}{6.5cm}
 \footnotesize
-\vspace{-1em}
+\vspace{-1.5em}
 \begin{shaded}
 \centering
 Optimal Cost Allocation Problem
@@ -331,11 +352,33 @@ s.t.~~ \alpha_1 \leq 11.5,~\cdots,&~\alpha_4 \leq 14.5,\\
 \textcolor{blue}{
 $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \end{shaded}
+\begin{shaded}
+\centering
+The minimum subsidy:
+\textcolor{red}{
+$c(V)-\alpha(V) = 38-37.25 = 0.75$}
+\end{shaded}
 \end{column}
 \end{columns}
 \end{frame}
 
+\begin{frame}{Example: Pricing Instrument}
+\small
+\centering
+%\begin{example}[SMW Game]
+\textcolor{blue}{Increase the setup cost from $9.5$ to $16$.\\
+For the grand coalition, it only needs one machine.}
+\vspace{2mm}
 
+\centering
+\includegraphics[width = 1\textwidth]{Figures/m2.png}
+
+\centering
+\includegraphics[width = 1\textwidth]{Figures/m3.png}
+
+\textcolor{red}{The total pricing can cover the subsidy, which means the grand coalition can be stabilized by the players themselves.}
+
+\end{frame}
 
 \section{Models and Analyses}
 \begin{frame}
