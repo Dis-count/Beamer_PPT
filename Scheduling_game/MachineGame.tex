@@ -440,7 +440,7 @@ For the grand coalition, it only needs one machine.}
 \end{frame}
 
 \begin{frame}{Properties}
-	\vspace{-12mm}
+	\vspace{-10mm}
 	\small
 		\begin{eqnarray*}
 		\textcolor{red}{\omega(P)} & =\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
@@ -467,22 +467,22 @@ For the grand coalition, it only needs one machine.}
 \end{frame}
 
 
-
-
 \begin{frame}{Properties}
 	\vspace{-1mm}
-		\begin{itemize}
-		\justifying
-			\item When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$};
-			\pause
-			\item Define that
+	\small
+		\begin{block}{Theorem 4}
+			When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$}.
+		\end{block}
+
+		\begin{block}{Theorem 5}
+			Define that
 			\begin{eqnarray*}
 			{\omega_1(P)}=&\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
 			&\alpha(s)\leq c(s)+P,\forall s \in S, \alpha\in\mathbb{R}^{v}\}
 			\end{eqnarray*}
 			Then the original problem $\omega(P)$ is equivalent to $\omega_1(P)$ which means that all sub-coalitions only use \textcolor{red}{one} machine.
+		\end{block}
 
-	\end{itemize}
 \end{frame}
 
 \section{Algorithms and Computations}
@@ -494,7 +494,9 @@ For the grand coalition, it only needs one machine.}
 
 \begin{frame}{IPC Algorithm}
 	\vspace{-13mm}
-	The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.
+	\begin{block}
+	{The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.}
+	\end{block}
 	\begin{description}
 	\justifying
 	\footnotesize
@@ -534,7 +536,9 @@ For the grand coalition, it only needs one machine.}
 
 
 \begin{frame}{CP Algorithm}
-	The Cutting Plane(CP) Algorithm to compute $\omega(P)$ for a given $P$.
+	\begin{block}
+		{The Cutting Plane(CP) Algorithm to compute $\omega(P)$ for a given $P$.}
+	\end{block}
 	\begin{description}
 	  \justifying
 		\footnotesize
@@ -559,7 +563,9 @@ For the grand coalition, it only needs one machine.}
 
 
 \begin{frame}{DP Algorithm}
-	The Dynamic Programming(DP) Algorithm to solve the separation problem.
+	\begin{block}
+		{The Dynamic Programming(DP) Algorithm to solve the separation problem.}
+	\end{block}
 	\begin{description}
 	\justifying
 	\footnotesize
