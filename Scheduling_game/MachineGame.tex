@@ -493,7 +493,7 @@ For the grand coalition, it only needs one machine.}
 \end{frame}
 
 \begin{frame}{IPC Algorithm}
-	\vspace{-13mm}
+	\vspace{-3mm}
 	\begin{block}
 	{The Intersection Points Computation(IPC) Algorithm to Construct $\omega(P)$ Function.}
 	\end{block}
@@ -558,7 +558,6 @@ For the grand coalition, it only needs one machine.}
 	  \item[Step 4.]
 	  If $\delta<0$, then add $s^*$ to $\mathbb{S}'$, and go to step 2; otherwise, return $\omega(P)=c(N)-\bar{\alpha}(N,P)$.
 	\end{description}
-
 \end{frame}
 
 
@@ -584,7 +583,7 @@ For the grand coalition, it only needs one machine.}
 \item[Step 4.] Obtain the optimal objective value of separation problem by
 $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
  return $\delta_{AIPU}$.
-	\end{description}
+\end{description}
 
 \end{frame}
 
@@ -605,21 +604,28 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 \end{frame}
 
 \begin{frame}{Machine Scheduling Game with Weighted Jobs}
-	\begin{itemize}
+	\begin{definition}
+	\small
 	\justifying
-		\item Each job $k \in V$ has a processing time and a weight denoted by $t_k,\omega_k$, respectively.
-		\vspace{2pt}
-		\item $c(S)$ can be obtained by assuming that\\
-		\quad $t_1/\omega_1 \leq t_2/\omega_2 \leq \ldots \leq t_v/\omega_v$.
-		\vspace{2pt}
-		\item $P_m = c_0(V,m)- c_0(V,m-1), 2 \leq m \leq v$.
-		\item ${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval.
-		\vspace{2pt}
-		\item The separation problem can be solved in polynomial time.
-\end{itemize}
+	A Machine Scheduling Game with Weighted Jobs:\\
+	\begin{itemize}
+		\justifying
+			\item Each job $k \in V$ has a processing time and a weight denoted by $t_k,\omega_k$, respectively.
+			\vspace{2pt}
+			\item $c(S)$ can be obtained by assuming that\\
+			\quad $t_1/\omega_1 \leq t_2/\omega_2 \leq \ldots \leq t_v/\omega_v$.
+			\vspace{2pt}
+			\item $P_m = c_0(V,m)- c_0(V,m-1), 2 \leq m \leq v$.
+			\item The properties of $\omega(P)$ and the corresponding Algorithms are similar to unweighted one.
+	\end{itemize}
+	\end{definition}
 \end{frame}
 
 \begin{frame}{Pricing in General IM Games}
+	\begin{definition}
+	\small
+	\justifying
+	The General Integer Minimization Games:\\
 	\begin{itemize}
 	\justifying
 		\item \textcolor{red}{$ILP:$}
@@ -627,17 +633,20 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 		\vspace{2pt}
 		\item \textcolor{blue}{Decompose} $c(S,m(S,P))$ into $\textcolor{blue}{c_0(S,m(S))}+Pm.$
 		\vspace{2pt}
-		\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,v.$
-		\item $c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \Leftrightarrow \quad P_m < P_{m+1} , m=2,3,\ldots,v-1.$
-		\vspace{3pt}
-		\footnotesize
-		\item $c_0(S_1,m-1)-c_0(S_1,m) \geq
-  c_0(S_1,m)-c_0(S_1,m+1) \quad m=2,\ldots,v-1.$
-		\item $	c_0(S_1,m-1)-c_0(S_1,m) \leq
-	  c_0(S_2,m-1)-c_0(S_2,m) \\
-		\quad \quad m=2,\ldots,v$, where ~$S_1 \subset S_2$.
+	% 	\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,v.$
+	% 	\item $c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \Leftrightarrow P_m < P_{m+1} , m=2,3,\ldots,v-1.$
+	% 	\vspace{3pt}
+	% 	\footnotesize
+	% 	\item $c_0(S_1,m-1)-c_0(S_1,m) \geq
+	% c_0(S_1,m)-c_0(S_1,m+1) \quad m=2,\ldots,v-1.$
+	% 	\item $	c_0(S_1,m-1)-c_0(S_1,m) \leq
+	% 	c_0(S_2,m-1)-c_0(S_2,m) \\
+	% 	\quad \quad m=2,\ldots,v$, where ~$S_1 \subset S_2$.
+		\item Analyse the properties of $c_0(S,m(S))$.
 	\end{itemize}
+	\end{definition}
 \end{frame}
+
 
 \section{Conclusion}
 \begin{frame}{Conclusions}
