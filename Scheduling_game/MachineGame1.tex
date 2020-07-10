@@ -487,43 +487,40 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 
 
 \begin{frame}{Properties}
-	\vspace{-1mm}
+	\vspace{-2mm}
 	\small
 		\begin{block}{Theorem 4}
 			When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$}.
 		\end{block}
 
-		\begin{definition}
+		\begin{block}{Define characteristic function of the single machine scheduling game:}
 		\small
+		\vspace{-5mm}
 		\begin{eqnarray*}\label{eqn:IVPU}
 		\begin{aligned}
 		%\min(\sum_{k\in S}C_k + Pm_S) \equiv
-		C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} x_{k1}} \\
+		C'(S,P)   &= {\min} \sum_{k \in V}\sum_{j \in O} {c_{kj} x_{kj}} + P \\
 		{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^S=0, \forall k \in V, \\
-		& \sum_{k\in V} x_{kj} \leq m,\forall j \in O,  \\
+		& \sum_{k\in V} x_{kj} \leq 1,\forall j \in O,  \\
 		& x_{kj} \in \{0,1\} , \forall k \in V, \forall j \in O,\\
 		& y_k^S=1, k \in S~; y_k^S=0, k \notin S.
 		\end{aligned}
 		\end{eqnarray*}
-		\end{definition}
-
+		\end{block}
 \end{frame}
 
 
 \begin{frame}{Properties}
 	\vspace{-1mm}
 	\small
-
-
 		\begin{block}{Theorem 5}
 			Define that
 			\begin{eqnarray*}
-			{\omega_1(P)}=&\mathop{\min}_{\alpha}\{c(V,P)-\alpha(V): \\
-			&\alpha(S)\leq C(S)+P,\forall S \in \mathbb{S}, \alpha\in\mathbb{R}^{v}\}
+			{\omega_1(P)}=&\mathop{\min}_{\alpha}\{\textcolor{blue}{C(V,P)}-\alpha(V): \\
+			&\alpha(S)\leq \textcolor{red}{C'(S,P)},\forall S \in \mathbb{S} \setminus \{V\}, \alpha\in\mathbb{R}^{v}\}
 			\end{eqnarray*}
-			Then the original problem $\omega(P)$ is equivalent to $\omega_1(P)$ which means that all sub-coalitions only use \textcolor{red}{one} machine.
+			Then the original problem $\omega(P)$ is equivalent to $\omega_1(P)$, where all sub-coalitions only use \textcolor{red}{one} machine.
 		\end{block}
-
 \end{frame}
 
 
@@ -674,7 +671,6 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 		\end{itemize}
 	\end{block}
 
-
 \end{frame}
 
 \begin{frame}{Pricing in General IM Games}
@@ -687,19 +683,28 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 		\item \textcolor{red}{$ILP:$}
 		$C(S,m'(S,P))= \mathop{\min}_{x} \{ cx+Pm'(x): Ax \geq By^S+D, \tilde{\alpha}x \leq m', x \in \mathbb{Z}^{t \times 1} \}$
 		\vspace{2pt}
-		\item \textcolor{blue}{Decompose} $c(S,m'(S,P))$ into $\textcolor{blue}{c_0(S,m'(S))}+Pm'.$
-		\vspace{2pt}
-		\item $c_0(V,i)- c_0(V,i-1) > 0 \Leftrightarrow P_i > 0, i=2,\ldots,v.$
-		\item $c_0 (V,i) - c_0 (V,i+1) < c_0 (V,i-1) - c_0 (V,i) \Leftrightarrow P_i < P_{i+1} , i=2,3,\ldots,v-1.$
-		\vspace{3pt}
-		\footnotesize
-		\item $c_0(S_1,i-1)-c_0(S_1,i) \geq
-	c_0(S_1,i)-c_0(S_1,i+1) \quad i=2,\ldots,v-1.$
-		\item $	c_0(S_1,i-1)-c_0(S_1,i) \leq
-		c_0(S_2,i-1)-c_0(S_2,i) \\
-		\quad \quad i=2,\ldots,v$, where ~$S_1 \subset S_2$.
+		\item \textcolor{blue}{Decompose} $C(S,m'(S,P))$ into $\textcolor{blue}{C_0(S,m'(S))}+Pm'.$
 	\end{itemize}
 	\end{definition}
+
+	\begin{block}
+		{Properties}
+		\small
+		The following properties illustrate that $P_i$ is in descending order:
+		\begin{itemize}
+			\justifying
+				\item $C_0(V,i-1)- C_0(V,i) > 0 \Leftrightarrow P_i > 0, i=2,\ldots,v.$
+				\item $C_0 (V,i) - C_0 (V,i+1) < C_0 (V,i-1) - C_0 (V,i) \Leftrightarrow P_i > P_{i+1} , i=2,3,\ldots,v-1.$
+				\vspace{3pt}
+			% 	\footnotesize
+			% The following inequalities can ensure that the number of machines used increases with the number of coalition players.
+			% 	\item $c_0(S_1,i-1)-c_0(S_1,i) \geq
+			% 	c_0(S_1,i)-c_0(S_1,i+1) \quad i=2,\ldots,v-1.$
+			% 	\item $	c_0(S_1,i-1)-c_0(S_1,i) \leq
+			% 	c_0(S_2,i-1)-c_0(S_2,i) \\
+			% 	\quad \quad i=2,\ldots,v$, where ~$S_1 \subset S_2$.
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
