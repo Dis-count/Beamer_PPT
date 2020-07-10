@@ -54,7 +54,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\cc}{\mathbb{c}}
 % \newtheorem{lemma}{Lemma}
-\newtheorem{thm}{Theorem}
+\newtheorem{thm}{Theorem}[numbered]
 
 
 % Author, Title, etc.
@@ -81,7 +81,7 @@ Stabilizing Grand Cooperation of Machine Scheduling Game via Setup Cost Pricing 
 	\vspace{2mm}
 	University of Science and Technology of China\\
     \vspace{10mm}
-	Co-authored with Zikang Li (USTC)
+	Co-authored with Zikang Li (PG Student, USTC)
 	\vspace{6mm}
 }
 
@@ -98,7 +98,6 @@ Stabilizing Grand Cooperation of Machine Scheduling Game via Setup Cost Pricing 
 %\end{frame}
 
 \begin{frame}{Outline}
-\small
 \tableofcontents
 \end{frame}
 
@@ -145,7 +144,7 @@ A cost allocation $\alpha \in \R^v$ is in the \textcolor{red}{\bf core} if it sa
 
 \pause
 \vspace{-12pt}
-\textcolor{red}{However, $\mathrm{Core}(V,C)$ can be empty.}
+\textcolor{red}{However, $\mathrm{Core}(V,c)$ can be empty.}
 \end{frame}
 
 
@@ -207,8 +206,8 @@ A cost allocation $\alpha \in \R^v$ is in the \textcolor{red}{\bf core} if it sa
 		\item Grand coalition: $V = \big\{ 1,2,3,4 \big\}$;
 		\item Processing times: $t_1=2$, $t_2=3$, $t_3=4$, $t_4=5$;
 		\item Machine setup cost: $t_0 = 9.5$;
-		\item $C(S)$ for $S\in \mathbb{S}$:  minimizing the total completion time of jobs in $S$ plus the machine setup cost;
-		\item \textcolor{red}{$C(V)= C(\{1,3\}) + C(\{2,4\})= 8 + 11 + 9.5\times 2 = 38$.}
+		\item $c(S)$ for $S\in \mathbb{S}$:  minimizes the total completion time of jobs in $S$ plus the machine setup cost;
+		\item \textcolor{red}{$\pi(N)= \pi(\{1,3\}) + \pi(\{2,4\})= 38$ (SPT Rule).}
 %\begin{center}
 
 \centering
@@ -355,7 +354,7 @@ $\alpha^* = \big[6;8.75;10.75;11.75\big]$}
 \centering
 The minimum subsidy:
 \textcolor{red}{
-$C(V)-\alpha(V) = 38-37.25 = 0.75$}
+$c(V)-\alpha(V) = 38-37.25 = 0.75$}
 \end{shaded}
 \end{column}
 \end{columns}
@@ -365,32 +364,37 @@ $C(V)-\alpha(V) = 38-37.25 = 0.75$}
 \small
 \centering
 %\begin{example}[SMW Game]
-\textcolor{blue}{Increase the setup cost from $9.5$ to $10$.}
+\textcolor{blue}{Increase the setup cost from $9.5$ to $10$.\\
+For the grand coalition, it only needs one machine.}
 \vspace{2mm}
 
 \centering
 \includegraphics[width = 1\textwidth]{Figures/m2.png}
-\pause
+
 \centering
 \includegraphics[width = 1\textwidth]{Figures/m3.png}
 
-\textcolor{red}{The total pricing can exactly cover the gap, which means the grand coalition can be stabilized by the players themselves.}
+\textcolor{red}{The total pricing can cover the subsidy, which means the grand coalition can be stabilized by the players themselves.}
 \end{frame}
+
 
 \begin{frame}{Example: Pricing Instrument}
 \small
 \centering
 %\begin{example}[SMW Game]
-\textcolor{blue}{Increase the setup cost from $9.5$ to $11.14$.\\
-For the grand coalition, it only needs one machine now.}
+\textcolor{blue}{Increase the setup cost from $9.5$ to $11$.\\
+For the grand coalition, it only needs one machine.}
 \vspace{2mm}
 
 \centering
 \includegraphics[width = 1\textwidth]{Figures/m0.png}
-~\\
+
 \centering
 \includegraphics[width = 1\textwidth]{Figures/m5.png}
+
+\textcolor{red}{The total pricing can cover the subsidy, which means the grand coalition can be stabilized by the players themselves.}
 \end{frame}
+
 
 \section{Models and Analyses}
 \begin{frame}
@@ -404,20 +408,19 @@ For the grand coalition, it only needs one machine now.}
 	\begin{definition}\label{definition:IVPU}
 	\small
 	\justifying
-	Parallel Machine Scheduling Game with Setup Cost (MSG):\\
+	An Identical Variable Parallel machine scheduling of Unweighted jobs game~(IVPU):\\
 	\begin{itemize}
 	\pause
 	\item \textcolor{red}{Grand coalition:} $V = \{1,2,\ldots,v\}$;
 	\pause
-	\item \textcolor{red}{Identical machines:} $M = \{1,2,\ldots,m\}$;
+	\item \textcolor{red}{Identical machine:} $M = \{1,2,\ldots,m\}$;
 	\pause
-	\item \textcolor{red}{Setup cost (unit price) of opening every single machine:} $P$;
+	\item \textcolor{red}{Each machine Price:} $P$ \text{and} \textcolor{red}{Each job processing time:} $t_k$;
 	\pause
-	\item \textcolor{red}{Processing time of each job:} $t_k,~\forall k \in V$;
-	\pause
-	\item \textcolor{red}{Characteristic function:} $C(S) $, denoting the total completion time and setup cost for each coalition $S \in \mathbb{S}$.
+	\item \textcolor{red}{Characteristic function:} $c(S) = \min(\sum_{k\in S}C_k + Pm_S)$,\\
+	\vspace{3mm}
+	where $C_k$ is the completion time of job $k \in S$ and $m_S$ is the number of using machine for the sub-coalition $S$.
 	\end{itemize}
-	~\\
 	\end{definition}
 \end{frame}
 
@@ -425,19 +428,18 @@ For the grand coalition, it only needs one machine now.}
 	\begin{definition}\label{definition:IVPU}
 	\small
 	\justifying
-	The characteristic function value, $C(S)$, of MSG is given by ILP\\
-	\vspace{-4mm}
+	A cooperative TU game (V,c) is called an IVPU game if it satisfies the following formulations:\\
+	\pause
+	\vspace{-8mm}
 	\begin{eqnarray*}\label{eqn:IVPU}
 	\begin{aligned}
-	%\min(\sum_{k\in S}C_k + Pm_S) \equiv
-C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} x_{k1}} \\
+	c(S,P) = & {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} x_{k1}} \\
 	{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^S=0, \forall k \in V, \\
 	& \sum_{k\in V} x_{kj} \leq m,\forall j \in O,  \\
 	& x_{kj} \in \{0,1\} , \forall k \in V, \forall j \in O,\\
 	& y_k^S=1, k \in S~; y_k^S=0, k \notin S.
 	\end{aligned}
 	\end{eqnarray*}
-		~\\
 	\end{definition}
 \end{frame}
 
@@ -446,30 +448,26 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 	\small
 	\justifying
 	\begin{itemize}
-	\item \textcolor{red}{$\big[P_L(i,S),P_H(i,S)\big]$:} Price range of using $i$ machines for scheduling jobs among players $S$;
-		\pause
-	\item \textcolor{red}{$\big[0,P^*\big]$:} Effective domain of pricing MSG for stabilization;
+	\item The interval $[P_L(m,S),P_H(m,S)]$ denotes the value range of price when the number of using machines $m$ and the coalition $S$ are given.
 	\pause
-	\item \textcolor{red}{$P_i$:} For easy of exposition, let $P_1 = P^*$ and $P_i = P_H(i,V) = P_L(i-1,V)$. Thus, the effective domain of $\big[0,P^*\big]$ is divided into $v$ non-overlapping sub-intervals by $P_i,~\forall i=\{2,3,...,v\}$.
+	\item For the grand coalition $V$, define $P_L(v,V) = 0, P_H(1,V) = P^*$. So the practical domain of the price is $[0,P^*]$ which is divided into $v$ nonoverlapping subintervals by the number of using machines.
+	\pause
+	\item Denote the right end of every subinterval as $P_i, 1 \leq i \leq v$, where $P_1 = P^*$.
 	\end{itemize}
 	\end{definition}
-	\vspace{4mm}
-	\footnotesize
-	\centering
-	Note: $P^*$ is the \textcolor{red}{lowest} price under which the grand cooperation of MSG is stable and it uses only one machine in the optimal scheduling decision,\\ i.e., $P^* \in \big[P_L(1,V),P_H(1,V) \big]$ and MSG $\big(V,C(~\cdot~, P^*)\big)$ has non-empty core.
 \end{frame}
 
 \begin{frame}{Properties}
 	\vspace{-10mm}
 	\small
 		\begin{eqnarray*}
-		\textcolor{red}{\omega(P)}& =\mathop{\min}_{\alpha}\{C(V,P)-\alpha(V): \\
-		 &\alpha(S)\leq C(S,P),\forall S \in \mathbb{S}, \alpha\in\mathbb{R}^{v}\};
+		\textcolor{red}{\omega(P)} & =\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
+		 &\alpha(s)\leq c(s,m(s,P)),\forall s \in S, \alpha\in\mathbb{R}^{v}\};
 		\end{eqnarray*}
 		\vspace{-10mm}
 		\footnotesize
 		\begin{block}{Theorem 1}
-		${\omega(P)}$ is piecewise linear, and convex in price $P$ at each sub-interval $[P_{i+1},P_i]$, where $i=\{1,2,...,v-1\}$ .
+		${\omega(P)}$ is piecewise linear, and convex in price $P$ at each subinterval $[P_L(m,V),P_H(m,V)]$ in $[0,P^*]$.
 		\end{block}
 
 		\begin{block}{Lemma 1}
@@ -477,52 +475,33 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 		\end{block}
 
 		\begin{block}{Theorem 2}
-		$P_{1}=P_{2}+\cdots+P_{v}=\sum_{i=2}^v P_i$.
+		$P_{1}=P_{2}+\cdots+P_{n}=\sum_{i=2}^n P_i$.
 		\end{block}
 
 		\begin{block}{Theorem 3}
-		$\omega(P)$ can be bounded by zero when the number of using machines, $m_V$, is larger than $\frac{n}{2}$.
-		\end{block}
-\end{frame}
-
-
-\begin{frame}{Properties}
-	\vspace{-2mm}
-	\small
-		\begin{block}{Theorem 4}
-			When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$}.
+		$\omega(P)$ can be bounded by zero when the number of using machines, m, is larger than $\frac{n}{2}$.
 		\end{block}
 
-		\begin{block}{Define characteristic function of the single machine scheduling game:}
-		\small
-		\vspace{-5mm}
-		\begin{eqnarray*}\label{eqn:IVPU}
-		\begin{aligned}
-		%\min(\sum_{k\in S}C_k + Pm_S) \equiv
-		C'(S,P)   &= {\min} \sum_{k \in V}\sum_{j \in O} {c_{kj} x_{kj}} + P \\
-		{s.t.}\quad & \sum_{j \in O} x_{kj}-y_k^S=0, \forall k \in V, \\
-		& \sum_{k\in V} x_{kj} \leq 1,\forall j \in O,  \\
-		& x_{kj} \in \{0,1\} , \forall k \in V, \forall j \in O,\\
-		& y_k^S=1, k \in S~; y_k^S=0, k \notin S.
-		\end{aligned}
-		\end{eqnarray*}
-		\end{block}
 \end{frame}
 
 
 \begin{frame}{Properties}
 	\vspace{-1mm}
 	\small
+		\begin{block}{Theorem 4}
+			When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$}.
+		\end{block}
+
 		\begin{block}{Theorem 5}
 			Define that
 			\begin{eqnarray*}
-			{\omega_1(P)}=&\mathop{\min}_{\alpha}\{\textcolor{blue}{C(V,P)}-\alpha(V): \\
-			&\alpha(S)\leq \textcolor{red}{C'(S,P)},\forall S \in \mathbb{S} \setminus \{V\}, \alpha\in\mathbb{R}^{v}\}
+			{\omega_1(P)}=&\mathop{\min}_{\alpha}\{c(V,m(V,P))-\alpha(V): \\
+			&\alpha(s)\leq c(s)+P,\forall s \in S, \alpha\in\mathbb{R}^{v}\}
 			\end{eqnarray*}
-			Then the original problem $\omega(P)$ is equivalent to $\omega_1(P)$, where all sub-coalitions only use \textcolor{red}{one} machine.
+			Then the original problem $\omega(P)$ is equivalent to $\omega_1(P)$ which means that all sub-coalitions only use \textcolor{red}{one} machine.
 		\end{block}
-\end{frame}
 
+\end{frame}
 
 \section{Algorithms and Computations}
 \begin{frame}
@@ -554,9 +533,9 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 	\begin{description}
 	\justifying
 	\footnotesize
-  \item[Step 6.] If $R_{k-1}(P)$ passes $(P_{k},\omega(P_{k}))$ or $L_{k}(P)$ passes $(P_{k-1},\omega(P_{k-1}))$, then update $\mathbb{I}$ by removing $[P_{k-1},P_{k}]$.
-  Otherwise, $R_{k-1}(P)$ and $L_{k}(P)$ must have a unique intersection point at $P=P'$ for some $P' \in (P_{k-1},P_{k})$.
-  Update $I^*$ by adding $P'$, and update $\mathbb{I}$ by removing $[P_{k-1},P_{k}]$, adding $[P_l,P']$ and $[P',P_r]$.
+  \item[Step 6.] If $R_{k-1}(P)$ passes $(P_{k},\omega(P_{k}))$ or $L_{k}(P)$ passes $(P_{k-1},\omega(P_{k-1}))$, then update $\mathbb{I}$ by removing
+  $[P_{k-1},P_{k}]$. Otherwise, $R_{k-1}(P)$ and $L_{k}(P)$ must have a unique intersection point at $P=P'$ for some $P' \in (P_{k-1},P_{k})$.
+  Update $I^*$ by adding $P^'$, and update $\mathbb{I}$ by removing $[P_{k-1},P_{k}]$, adding $[P_l,P']$ and $[P',P_r]$.
   \item[Step 7.] Go to step 2.
   \item[Step 8.] Return a piecewise linear function by connecting points $(P,\omega(P))$ for all $P \in I^*$.
 	\end{description}
@@ -608,7 +587,7 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 	\justifying
 	\footnotesize
 	\item[Step 1.] Initially, let $D(k,u)$ indicate the minimum objective value of the restricted problem of separation problem, where $k\in \{1,2,\ldots,v\}$ and $u\in \{0,1,\ldots,v\}$.
-	\item[Step 2.] Given the initial conditions $D(1,0) = P$ and $D(1,1) = t_1 - \beta_1 +P$. The boundary conditions are $D(k,u) = \infty$ if $u > k$, for all $k \in V$.
+	\item[Step 2.] Given the initial conditions $D(1,0) = P$ and $D(1,1) = t_1 - \beta_1 +P$. The boundary conditions are $D(k,u) = \infinity$ if $u > k$, for all $k \in V$.
 	\item[Step 3.] Given the recursion:
 	\begin{equation*}
 	D(k,u)= \min \left\{
@@ -653,24 +632,15 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 	A Machine Scheduling Game with Weighted Jobs:\\
 	\begin{itemize}
 		\justifying
-			\item Each job $k \in V$ has a processing time, $t_k$, and a weight, $w_k$.
+			\item Each job $k \in V$ has a processing time and a weight denoted by $t_k,\omega_k$, respectively.
+			\vspace{2pt}
+			\item $c(S)$ can be obtained by assuming that\\
+			\quad $t_1/\omega_1 \leq t_2/\omega_2 \leq \ldots \leq t_v/\omega_v$.
+			\vspace{2pt}
+			\item $P_m = c_0(V,m)- c_0(V,m-1), 2 \leq m \leq v$.
+			\item The properties of $\omega(P)$ and the corresponding Algorithms are similar to unweighted one.
 	\end{itemize}
 	\end{definition}
-
-	\begin{block}
-		{Properties}
-		\begin{itemize}
-			\justifying
-			\small
-				\item $C(S)$ and $P_i, 2 \leq i \leq v$ can also be obtained by assuming that\\
-				\quad $t_1/\omega_1 \leq t_2/\omega_2 \leq \ldots \leq t_v/\omega_v$.
-				\vspace{2pt}
-				% \item $P_i = c_0(V,m)- c_0(V,m-1), 2 \leq i \leq v$.
-				\item ${\omega(P)}$ is also piecewise linear, and convex in price $P$ at each subinterval.
-				\item IPC, CP, DP Algorithms can also be uesd to construct $\omega(P)$ function.
-		\end{itemize}
-	\end{block}
-
 \end{frame}
 
 \begin{frame}{Pricing in General IM Games}
@@ -681,30 +651,22 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 	\begin{itemize}
 	\justifying
 		\item \textcolor{red}{$ILP:$}
-		$C(S,m'(S,P))= \mathop{\min}_{x} \{ cx+Pm'(x): Ax \geq By^S+D, \tilde{\alpha}x \leq m', x \in \mathbb{Z}^{t \times 1} \}$
+		$c(S,m(S,P))= \mathop{\min}_{x} \{ cx+Pm(x): Ax \geq By^s+D, \tilde{\alpha}x \leq m, x \in \mathbb{Z}^{t \times 1} \}$
 		\vspace{2pt}
-		\item \textcolor{blue}{Decompose} $C(S,m'(S,P))$ into $\textcolor{blue}{C_0(S,m'(S))}+Pm'.$
+		\item \textcolor{blue}{Decompose} $c(S,m(S,P))$ into $\textcolor{blue}{c_0(S,m(S))}+Pm.$
+		\vspace{2pt}
+	% 	\item $c_0(V,m)- c_0(V,m-1) > 0 \Leftrightarrow P_m > 0, m=2,\ldots,v.$
+	% 	\item $c_0 (V,m) - c_0 (V,m+1) < c_0 (V,m-1) - c_0 (V,m) \Leftrightarrow P_m < P_{m+1} , m=2,3,\ldots,v-1.$
+	% 	\vspace{3pt}
+	% 	\footnotesize
+	% 	\item $c_0(S_1,m-1)-c_0(S_1,m) \geq
+	% c_0(S_1,m)-c_0(S_1,m+1) \quad m=2,\ldots,v-1.$
+	% 	\item $	c_0(S_1,m-1)-c_0(S_1,m) \leq
+	% 	c_0(S_2,m-1)-c_0(S_2,m) \\
+	% 	\quad \quad m=2,\ldots,v$, where ~$S_1 \subset S_2$.
+		\item Analyse the properties of $c_0(S,m(S))$.
 	\end{itemize}
 	\end{definition}
-
-	\begin{block}
-		{Properties}
-		\small
-		The following properties illustrate that $P_i$ is in descending order:
-		\begin{itemize}
-			\justifying
-				\item $C_0(V,i-1)- C_0(V,i) > 0 \Leftrightarrow P_i > 0, i=2,\ldots,v.$
-				\item $C_0 (V,i) - C_0 (V,i+1) < C_0 (V,i-1) - C_0 (V,i) \Leftrightarrow P_i > P_{i+1} , i=2,3,\ldots,v-1.$
-				\vspace{3pt}
-			% 	\footnotesize
-			% The following inequalities can ensure that the number of machines used increases with the number of coalition players.
-			% 	\item $c_0(S_1,i-1)-c_0(S_1,i) \geq
-			% 	c_0(S_1,i)-c_0(S_1,i+1) \quad i=2,\ldots,v-1.$
-			% 	\item $	c_0(S_1,i-1)-c_0(S_1,i) \leq
-			% 	c_0(S_2,i-1)-c_0(S_2,i) \\
-			% 	\quad \quad i=2,\ldots,v$, where ~$S_1 \subset S_2$.
-		\end{itemize}
-	\end{block}
 \end{frame}
 
 
