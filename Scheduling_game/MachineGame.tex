@@ -490,7 +490,7 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 	\vspace{-2mm}
 	\small
 		\begin{block}{Theorem 4}
-			When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{n-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$}.
+			When the number of using machines is 1 for the grand coalition, the range of slopes of the line segments in the interval is \textcolor{red}{$\left( -1 , -\frac{1}{v-1} \right]$}, and the number of breakpoints is \textcolor{red}{$ O(v^2)$}.
 		\end{block}
 
 		\begin{block}{Define characteristic function of the single machine scheduling game:}
@@ -581,50 +581,76 @@ C(S,P)   &= {\min} \sum_{k\in V}\sum_{j\in O} {c_{kj} x_{kj}} + {P\sum_{k\in S} 
 	\begin{description}
 	  \justifying
 		\footnotesize
-	  \item[Step 1.] Let $\mathbb{S}'\subseteq \mathbb{S}\setminus \{N\}$ indicates a restricted coalition set, which includes some initial coalitions,
+	  \item[Step 1.] Let $\mathbb{S}'\subseteq \mathbb{S}\setminus \{V\}$ indicates a restricted coalition set, which includes some initial coalitions,
 	  \vspace{10pt}
 	  e.g.,$ \{1\},\{2\},\ldots,\{v\}$.
 	  \item[Step 2.] Find an optimal solution $\bar{\alpha}(\ \cdot \ ,P)$ to LP $\tau(P)$:
 	  \begin{equation*}
-	  \max_{\alpha\in \mathbb{R}^n} \big\{ \alpha(N,P): \alpha(s,P) \leq c(s)+P, \mbox{ for all } s \in \mathbb{S}'\big\}.
+	  \max_{\alpha\in \mathbb{R}^n} \big\{ \alpha(V,P): \alpha(S,P) \leq C'(S,P), \mbox{ for all } S \in \mathbb{S}'\big\}.
 	  \end{equation*}
 	  \vspace{-11pt}
 	  \item[Step 3.]
-	  Find an optimal solution $s^*$ to \textcolor{red}{the separation problem}:
+	  Find an optimal solution $S^*$ to \textcolor{red}{the separation problem}:
 	  \begin{equation*}
-	  \delta = \min \big\{ c(s)+ P -\bar{\alpha}(s,z): \forall s \in \mathbb{S} \setminus \{N\}\big\}.
+	  \delta = \min \big\{ C'(S,P) -\bar{\alpha}(S,P): \forall S \in \mathbb{S} \setminus \{V\}\big\}.
 	  \end{equation*}
 	  \item[Step 4.]
-	  If $\delta<0$, then add $s^*$ to $\mathbb{S}'$, and go to step 2; otherwise, return $\omega(P)=c(N)-\bar{\alpha}(N,P)$.
+	  If $\delta<0$, then add $S^*$ to $\mathbb{S}'$, and go to step 2; otherwise, return $\omega(P)=C(V,P)-\bar{\alpha}(V,P)$.
 	\end{description}
 \end{frame}
 
 
 \begin{frame}{DP Algorithm}
+	\vspace{-2mm}
 	\begin{block}
 		{The Dynamic Programming Algorithm to solve the separation problem.}
 	\end{block}
+	\small
+	\begin{itemize}
+		\item 	Assume that the processing jobs satisfy \textcolor{red}{$t_1 \geq t_2 \geq \ldots \geq t_v$}.
+		\item  For the separation problem $\delta_{AIPU} = \min \big\{ C'(S,P) -\bar{\alpha}(S,P): \forall S \in \mathbb{S} \setminus \{V\}\big\}$, where $C'(S,P)$ can be obtained by the SPT rule.
+		\item  That means if add a new player $k\notin S$ into $S$, where $|S| =u$, the increment for the restricted separation problem is \textcolor{red}{$(u+1)t_k-\alpha_k$}, which will be shown in the recursion in \textbf{Step 3}.
+	\end{itemize}
+
 	\begin{description}
 	\justifying
 	\footnotesize
-	\item[Step 1.] Initially, let $D(k,u)$ indicate the minimum objective value of the restricted problem of separation problem, where $k\in \{1,2,\ldots,v\}$ and $u\in \{0,1,\ldots,v\}$.
-	\item[Step 2.] Given the initial conditions $D(1,0) = P$ and $D(1,1) = t_1 - \beta_1 +P$. The boundary conditions are $D(k,u) = \infty$ if $u > k$, for all $k \in V$.
+	\item[Step 1.] Initially, let $D(k,u)$ indicate the minimum objective value of the restricted problem of separation problem $\delta_{AIPU}$, where $k$ is a player in the grand coalition and $u$ is the number of players included in $S$. So $ k \in \{1,2,\ldots,v\}$ and $u\in \{0,1,\ldots,v\}$.
+
+\end{description}
+
+\end{frame}
+
+\begin{frame}{DP Algorithm}
+	\vspace{-3mm}
+
+	\small
+	\begin{description}
+	\justifying
+	\footnotesize
+	\item[Step 2.] Given the initial conditions $D(1,0) = P$ and $D(1,1) = t_1 - \alpha_1 +P$. The boundary conditions are $D(k,u) = \infty$ if $u > k$, for all $k \in V$.
 	\item[Step 3.] Given the recursion:
 	\begin{equation*}
 	D(k,u)= \min \left\{
 	\begin{aligned}
-	& D(k-1,u), \text{for the case when} \ s^* \ \text{does not contain} \ k, \\
-	& D(k-1,u-1) + u t_k - \alpha_k ,\text{for the case when} \ s^* \ \text{contains} \ k.
+	& D(k-1,u), \text{for the case when} \ S^* \ \text{does not contain} \ k, \\
+	& D(k-1,u-1) + u t_k - \alpha_k ,\text{for the case when} \ S^* \ \text{contains} \ k.
 	\end{aligned}
 	\right.
 	\end{equation*}
 
-\item[Step 4.] Obtain the optimal objective value of separation problem by
-$\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
+	\item[Step 4.] Obtain the optimal objective value of separation problem by
+	$\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
  return $\delta_{AIPU}$.
 \end{description}
 
+\begin{block}
+	{The DP Algorithm can solve the separation problem $\delta_{AIPU}$ in $O(v^2)$ time.}
+	Notice that $k \in \{1,2,\ldots,v\}$ and $u\in \{0,1,\ldots,v\}$ for the $D(k,u)$, so the total running time is in $O(v^2)$.
+\end{block}
+
 \end{frame}
+
 
 \begin{frame}{Computational Results}
 	\small
@@ -677,13 +703,14 @@ $\delta_{AIPU} = \min\{D(v,u): u\in \{1,2,\ldots,v-1\}\}$.
 	\begin{definition}
 	\small
 	\justifying
-	The General Integer Minimization Games:\\
+	General Integer Minimization Games:\\
 	\begin{itemize}
 	\justifying
-		\item \textcolor{red}{$ILP:$}
-		$C(S,m'(S,P))= \mathop{\min}_{x} \{ cx+Pm'(x): Ax \geq By^S+D, \tilde{\alpha}x \leq m', x \in \mathbb{Z}^{t \times 1} \}$
+		\item
+		$C(S,P)= \mathop{\min}_{x} \{ cx+\textcolor{red}{Pm(x)}: Ax \geq By^S+D, {\beta}x \leq m, x \in \mathbb{Z}^{t} \}$
 		\vspace{2pt}
-		\item \textcolor{blue}{Decompose} $C(S,m'(S,P))$ into $\textcolor{blue}{C_0(S,m'(S))}+Pm'.$
+		% \item Let \textcolor{blue}{$C_0(S,P)+Pm(x^*)$}   $= C(S,P)$.
+		\item Define $H_0(V,i) = C(V,P)- Pi$, where $m(x^*) = i$
 	\end{itemize}
 	\end{definition}
 
